@@ -32,7 +32,7 @@ for how to connect each tool.
 ## Setup
 
 1. Install the plugin — in the desktop app, open the `.plugin` file; in Claude Code:
-   `/plugin install amazon-ops-copilot --marketplace <owner>/amazon-ops-kit`.
+   `/plugin install amazon-ops-copilot --marketplace karthick-mallow/amazon-ops-kit`.
 2. Fill in the two plugin settings: **Tracker GitHub repository** (`username/amazon-ops-tracker`)
    and **GitHub token**. Everything else — brands, marketplace, currency, target, pause
    threshold — is asked by `/setup` and saved in `config.md` in the tracker repo.

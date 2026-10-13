@@ -21,7 +21,7 @@ a plugin marketplace in the app's plugin settings and install **amazon-ops-copil
 **Claude Code:**
 
 ```bash
-claude plugin marketplace add <owner>/amazon-ops-kit
+claude plugin marketplace add karthick-mallow/amazon-ops-kit
 claude plugin install amazon-ops-copilot@amazon-ops-kit
 ```
 
