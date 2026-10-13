@@ -11,6 +11,8 @@ I've done with any AI tool, so you can pick up where I left off.
 
 At the start of every conversation about my business, open `AGENTS.md` in that repository and
 follow it: read `config.md`, `STATE.md`, `LESSONS.md` and the recent rows of `tracker.csv` before
-answering. Use KwickMetrics for any current numbers. At the end, log what we did as `AGENTS.md`
-describes and tell me the activity ID. If you can't write to the repository, give me the entry as
-ready-to-save text.
+answering, and always check the last 90 days of activity before suggesting anything. Use
+KwickMetrics for any current numbers. Log every change made through KwickMetrics automatically;
+ask me before logging anything else. Record your AI tool and exact model name in each entry, and
+tell me the activity ID. If you can't write to the repository, give me the entry as ready-to-save
+text.

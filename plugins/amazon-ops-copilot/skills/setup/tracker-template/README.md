@@ -64,5 +64,7 @@ connect, ask KwickMetrics support.
 1. Start of a conversation: read `AGENTS.md`, `config.md`, `STATE.md`, `LESSONS.md` and the recent
    rows of `tracker.csv`.
 2. Pull current numbers from KwickMetrics; never reuse old figures as live data.
-3. End of a conversation: log what was done — a new page in `activities/`, a new top row in
-   `tracker.csv`, an updated `STATE.md` — in one commit tagged with the AI tool that did the work.
+3. Before suggesting anything: check the last 90 days of related activity.
+4. Log: changes made through KwickMetrics automatically; anything else only with the seller's
+   approval. Each entry — a page in `activities/`, a top row in `tracker.csv`, an updated
+   `STATE.md` — records the AI tool and model that did the work.

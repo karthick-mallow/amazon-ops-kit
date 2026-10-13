@@ -6,7 +6,7 @@ description: >
   activities whose follow-up date has arrived, compares them with live KwickMetrics data, and logs
   the result.
 metadata:
-  version: "0.6.0"
+  version: "0.7.0"
 ---
 
 # Review Follow-ups
@@ -19,6 +19,6 @@ metadata:
    since. Ads data takes 2–3 days to settle; say so if the window is too recent.
 3. **Report** per activity: before → now, and a plain verdict — worked, partly worked, didn't work,
    or too early to tell.
-4. **Record it** with `log-activity` as one **Review** activity. Then update each reviewed row's
+4. **Record it** — ask the seller, then log one **Review** activity with `log-activity`. Then update each reviewed row's
    Status and Follow-up in place, and add a dated `Review note (YYYY-MM-DD, ACT-NNN)` at the end
    of its page. Never change the original page's figures.

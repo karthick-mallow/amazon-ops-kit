@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.7.0 — 2026-10-13
+
+- Changes made through KwickMetrics are logged automatically; analysis, diagnosis, plans and
+  changes made outside KwickMetrics are logged only after the seller approves.
+- Before suggesting anything, the AI always checks the last 90 days of related activity and says
+  what it found.
+- New `AI tool` and `AI model` columns in `tracker.csv` (after `Date (UTC)`) and matching page
+  fields; older trackers get the columns added with `Not recorded`.
+
 ## 0.6.1 — 2026-10-13
 
 - Correct KwickMetrics MCP address: `https://mcp.api.kwickmetrics.com/mcp/kwickmetrics`.

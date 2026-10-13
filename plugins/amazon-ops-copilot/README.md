@@ -1,7 +1,8 @@
 # Amazon Ops Copilot
 
-Shared memory for Amazon sellers who use **KwickMetrics**. Every analysis, decision and change you
-make with Claude is saved to your own private GitHub repo. Claude, ChatGPT, Grok, Gemini and other
+Shared memory for Amazon sellers who use **KwickMetrics**. Every change you make through
+KwickMetrics, and any analysis or decision you choose to keep, is saved to your own private GitHub
+repo, with the AI tool and model that did it. Claude, ChatGPT, Grok, Gemini and other
 AI tools read that repo first, so whichever one you open already knows what you've done, and you
 never have to explain it again.
 
@@ -9,8 +10,8 @@ never have to explain it again.
 
 | Skill | When it runs | What it does |
 |---|---|---|
-| Load context | Automatically, when you talk about your business | Reads your tracker first, so Claude knows what was done before, in any AI tool |
-| Log activity | Automatically at the end of a working session, and right after any change | Saves what was done to your GitHub tracker and tells you the ID |
+| Load context | Automatically, when you talk about your business | Reads your tracker first, and always checks the last 90 days of related activity before suggesting anything |
+| Log activity | Automatically right after any change made through KwickMetrics; for anything else, after you say yes | Saves the activity to your GitHub tracker with the AI tool and model that did it, and tells you the ID |
 | Review follow-ups | `/review-followups` | Checks whether earlier changes worked, using live KwickMetrics data |
 | Impact dashboard | `/impact-dashboard` | Charts your sales and ad spend with every logged activity marked on it |
 | Setup | `/setup` | Creates the tracker in your GitHub repo and records your KwickMetrics accounts. Asks no questions. |

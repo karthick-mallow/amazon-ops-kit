@@ -2,7 +2,10 @@
 
 * Brand: <brand or account name | All>
 * Marketplace: <amazon domain>
-* Executed By: <user's name> | AI Client / Model: <e.g. Claude / Opus, Codex / GPT-5, Gemini CLI / Gemini 2.5 Pro>
+* Executed By: <user's name>
+* AI Tool: <e.g. Claude, ChatGPT, Grok, Gemini>
+* AI Model: <exact model name, e.g. Claude Opus 5.5>
+* Logged: <Automatically (KwickMetrics change) | With the seller's approval>
 * KwickMetrics Focus: <PPC | SEO | Inventory | Financials | Buy Box>
 * Reporting Window: <exact date range, or "snapshot as of <timestamp>">
 * Related Activities: <ACT-XXX, ACT-XXX — or "None">

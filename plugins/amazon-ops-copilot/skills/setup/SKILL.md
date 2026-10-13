@@ -7,7 +7,7 @@ description: >
   Amazon Ops Copilot skill finds the tracker missing. It prepares the seller's private GitHub
   tracker repo without asking any questions.
 metadata:
-  version: "0.6.0"
+  version: "0.7.0"
 ---
 
 # Setup
@@ -50,8 +50,8 @@ Commit as `Set up Amazon Activity Tracker`.
 
 Tell the seller, in three short lines:
 - The tracker is ready in `<username>/amazon-ops-tracker`, with the KwickMetrics accounts it found.
-- From now on every conversation about their business is saved there automatically, and any AI
-  tool connected to the repo picks up from it.
+- Changes they make through KwickMetrics are saved there automatically; for anything else Claude
+  asks before saving. Any AI tool connected to the repo picks up from it.
 - They can set goals any time by just saying them, e.g. "My target this month is ₹8,00,000".
 
 ## Only when the seller asks
@@ -62,5 +62,7 @@ Tell the seller, in three short lines:
   open. Report the count imported against the source; leave the original untouched.
 - **Connect another AI tool:** point them to the "Connect an AI tool" section of the repo's
   `README.md` for the tool they name.
-- **Update my AGENTS.md** (after a plugin update): replace the repo's `AGENTS.md`, `README.md` and
-  `TEMPLATE.md` with the plugin's latest copies, keeping everything else, and say what changed.
+- **Update my AGENTS.md** (after a plugin update): replace the repo's `AGENTS.md`, `README.md`,
+  `PROMPT.md` and `TEMPLATE.md` with the plugin's latest copies, keeping everything else; if
+  `tracker.csv` lacks the `AI tool` / `AI model` columns, add them after `Date (UTC)` with
+  `Not recorded` for older rows. Say what changed.
