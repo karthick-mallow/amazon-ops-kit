@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.6.1 — 2026-10-13
+
+- Correct KwickMetrics MCP address: `https://mcp.api.kwickmetrics.com/mcp/kwickmetrics`.
+
 ## 0.6.0 — 2026-10-13
 
 - No plugin settings. The Claude app doesn't show plugin settings boxes, so the tracker is found by

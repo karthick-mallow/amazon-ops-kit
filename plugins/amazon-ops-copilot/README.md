@@ -18,7 +18,7 @@ never have to explain it again.
 Goals are yours to set, by just saying them, e.g. "My target this month is ₹8,00,000" or "Keep
 ACoS under 30%". Claude saves them in the tracker and every AI tool sees them.
 
-Connectors: **KwickMetrics** (`https://mcp.api.kwickmetrics.com`) and **GitHub**
+Connectors: **KwickMetrics** (`https://mcp.api.kwickmetrics.com/mcp/kwickmetrics`) and **GitHub**
 (`https://api.githubcopilot.com/mcp/`).
 
 ## Setup

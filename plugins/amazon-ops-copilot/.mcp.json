@@ -2,7 +2,7 @@
   "mcpServers": {
     "KwickMetrics": {
       "type": "http",
-      "url": "https://mcp.api.kwickmetrics.com"
+      "url": "https://mcp.api.kwickmetrics.com/mcp/kwickmetrics"
     },
     "github": {
       "type": "http",

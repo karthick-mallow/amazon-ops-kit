@@ -1,7 +1,7 @@
 {
   "name": "amazon-ops-copilot",
   "displayName": "Amazon Ops Copilot",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "description": "Shared memory for Amazon sellers who use KwickMetrics. Every analysis, decision and change you make with Claude is saved to your private GitHub repo, so Claude, ChatGPT, Grok and other AI tools pick up where you left off without you explaining it again.",
   "author": {
     "name": "Amazon Ops Copilot maintainers"

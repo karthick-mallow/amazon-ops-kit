@@ -15,13 +15,13 @@ Keep this repository **private**. It holds commercial data.
 ## Connect an AI tool
 
 Every tool needs two things: access to **this repo** (memory) and access to **KwickMetrics** (live
-data, MCP server `https://mcp.api.kwickmetrics.com`). Without KwickMetrics a tool can read and
+data, MCP server `https://mcp.api.kwickmetrics.com/mcp/kwickmetrics`). Without KwickMetrics a tool can read and
 discuss the history but must not quote current figures.
 
 | Tool | Reads the rules on its own? | Repo access | KwickMetrics access |
 |---|---|---|---|
 | Claude (app, Cowork) | Yes, via the Amazon Ops Copilot plugin | Plugin's GitHub connector | KwickMetrics connector |
-| Claude Code | Yes (`CLAUDE.md` → `AGENTS.md`) | Clone the repo | `claude mcp add --transport http kwickmetrics https://mcp.api.kwickmetrics.com` |
+| Claude Code | Yes (`CLAUDE.md` → `AGENTS.md`) | Clone the repo | `claude mcp add --transport http kwickmetrics https://mcp.api.kwickmetrics.com/mcp/kwickmetrics` |
 | OpenAI Codex (CLI, IDE, cloud) | Yes (`AGENTS.md`) | Clone, or connect the repo in Codex cloud | Remote MCP server in `~/.codex/config.toml` (below) |
 | Gemini CLI | Yes (`GEMINI.md` → `AGENTS.md`) | Clone the repo | Remote MCP server in `.gemini/settings.json` (below) |
 | Cursor, GitHub Copilot | Yes (`AGENTS.md`; Copilot also `.github/copilot-instructions.md`) | Open the cloned repo | The tool's MCP settings, same URL |
@@ -36,7 +36,7 @@ lost.
 
 ```toml
 [mcp_servers.kwickmetrics]
-url = "https://mcp.api.kwickmetrics.com"
+url = "https://mcp.api.kwickmetrics.com/mcp/kwickmetrics"
 ```
 
 Then sign in with `codex mcp login kwickmetrics`.
@@ -46,7 +46,7 @@ Then sign in with `codex mcp login kwickmetrics`.
 ```json
 {
   "mcpServers": {
-    "kwickmetrics": { "httpUrl": "https://mcp.api.kwickmetrics.com" }
+    "kwickmetrics": { "httpUrl": "https://mcp.api.kwickmetrics.com/mcp/kwickmetrics" }
   }
 }
 ```
