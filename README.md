@@ -1,17 +1,19 @@
 # Amazon Ops Kit
 
-Run an Amazon seller business with AI assistants on live KwickMetrics data, with **one shared
-memory in GitHub** that every AI tool reads and writes: Claude, ChatGPT / Codex, Gemini, Grok,
-Copilot or Cursor.
+Shared memory for Amazon sellers who use **KwickMetrics** with AI tools. Everything a seller does —
+analyses, decisions, changes — is logged to their own private GitHub repo, which Claude, ChatGPT /
+Codex, Gemini, Grok, Copilot or Cursor all read first. Whichever tool they open already knows what
+was done, so they never have to explain it again.
 
 Two parts:
 
 1. **The tracker repo template** — `plugins/amazon-ops-copilot/skills/setup/tracker-template/`.
-   A private GitHub repo built from it holds the rulebook (`AGENTS.md`), the current position
-   (`STATE.md`), lessons learned, and every activity. Any AI tool that can reach GitHub and
-   KwickMetrics picks up the same history and follows the same rules.
-2. **The Amazon Ops Copilot plugin for Claude** — skills that follow that rulebook: target
-   reviews, approval-first changes, logging, follow-up reviews, an impact dashboard and setup.
+   A private GitHub repo built from it holds the instructions every AI tool follows (`AGENTS.md`),
+   the seller's accounts and goals (`config.md`), where things stand (`STATE.md`), lessons
+   learned, and every activity.
+2. **The Amazon Ops Copilot plugin for Claude** — reads that history at the start of a
+   conversation, logs each session automatically, reviews follow-ups, draws an impact dashboard,
+   and sets the repo up without asking any questions.
 
 ## Start with Claude
 
@@ -32,7 +34,7 @@ Then run `/setup`. It creates your private tracker repo from the template.
 1. Create a new **private** GitHub repo.
 2. Copy everything in `plugins/amazon-ops-copilot/skills/setup/tracker-template/` into it,
    including `.github/`.
-3. Fill in `config.md` (brands, KwickMetrics account slugs, marketplace, currency, target).
+3. Fill in the accounts table in `config.md` (KwickMetrics account names, slugs, marketplace).
 4. Replace `OWNER/REPO` in `PROMPT.md`.
 5. Connect your AI tool to the repo and to KwickMetrics using the table in the template's
    `README.md`.
@@ -56,7 +58,7 @@ one in Claude on Tuesday continue the same thread.
 plugins/amazon-ops-copilot/
   .claude-plugin/plugin.json                     manifest and settings
   .mcp.json                                      KwickMetrics + GitHub connectors
-  skills/                                        seven skills
+  skills/                                        five skills
   skills/setup/tracker-template/                 the shared tracker repo template
 CHANGELOG.md
 ```
@@ -67,5 +69,4 @@ Your tracker data never lives in this repository.
 
 Maintainers bump `version` in `plugin.json` and add a line to `CHANGELOG.md`. Claude Code users
 update with `claude plugin update amazon-ops-copilot@amazon-ops-kit`. Changes to `AGENTS.md` in the
-template reach existing trackers only when a seller copies them in (or runs `/setup`, which shows
-the differences and asks first).
+template reach existing trackers only when a seller copies them in.

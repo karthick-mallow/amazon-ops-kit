@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.5.0 — 2026-10-13
+
+- Refocused on one job: shared activity memory across AI tools. The plugin reads the seller's
+  history at the start of a conversation and logs each working session automatically.
+- Removed the target review and change-approval skills, the operating rules, and the pause
+  threshold. New `load-context` skill.
+- `/setup` asks no questions: it reads accounts from KwickMetrics and creates the tracker.
+- Goals (monthly target, target ACoS…) are saved only when the seller states them in chat.
+- New plugin and marketplace descriptions.
+
 ## 0.4.0 — 2026-10-13
 
 - Plugin settings cut to two required boxes: Tracker GitHub repository and GitHub token.

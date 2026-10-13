@@ -4,21 +4,22 @@ description: >
   This skill should be used when the user asks for "the impact dashboard", "show what our changes
   did", "chart sales with our activities", "plot ad spend with the tracker markers", "refresh the
   dashboard", or invokes /impact-dashboard. It builds a page charting daily KwickMetrics metrics per
-  brand with every tracker activity marked on the timeline and its before / after impact.
+  account with every tracker activity marked on the timeline, so the seller sees what each
+  activity did.
 metadata:
-  version: "0.1.0"
+  version: "0.5.0"
 ---
 
 # Impact Dashboard
 
-Follow `operating-rules`. The dashboard joins two sources: daily metrics from KwickMetrics and
-activities from the tracker (`log-activity`).
+The dashboard joins two sources: daily metrics from KwickMetrics and the activities in the
+seller's GitHub tracker (see `load-context`).
 
 ## 1. Gather the data
 
 1. Read the tracker: every activity in the last 90 days — ID, date, type, brand, title/summary,
    status, follow-up, and the before / after or headline numbers from the page.
-2. For each in-scope brand, pull daily series for the last 90 completed days:
+2. For each KwickMetrics account in `config.md`, pull daily series for the last 90 completed days:
    `get_sales_trends` (sales, orders) and `get_ppc_trends` (spend, ad sales). Compute ACoS and
    TACoS per day. Exclude today (partial day) and shade the last 3 days as "still settling".
 3. Save the rows to data files and compute in code. Every plotted value must come from these

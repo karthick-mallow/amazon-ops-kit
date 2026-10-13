@@ -1,7 +1,7 @@
 # Amazon Activity Tracker
 
-The shared operating memory for this seller business: every analysis, decision and change made
-with any AI assistant, in one place. Any AI tool that can reach this repository picks up the same
+The shared memory for this seller business: every analysis, decision and change made with any AI
+assistant and KwickMetrics, in one place. Any AI tool that can reach this repository picks up the same
 history, the same open threads and the same rules.
 
 - **Rules for AI assistants:** [`AGENTS.md`](AGENTS.md)
@@ -61,9 +61,8 @@ connect, ask KwickMetrics support.
 
 ## How every tool keeps the memory consistent
 
-1. Start of session: read `AGENTS.md`, `config.md`, `STATE.md`, `LESSONS.md` and the recent rows of
-   `tracker.csv`.
-2. Pull live numbers from KwickMetrics; never reuse old figures.
-3. Propose changes as a table; change the account only after explicit approval.
-4. Log: new page in `activities/`, new top row in `tracker.csv`, refresh `STATE.md`, add a lesson
-   if one was learned — all in one commit tagged with the AI client that did the work.
+1. Start of a conversation: read `AGENTS.md`, `config.md`, `STATE.md`, `LESSONS.md` and the recent
+   rows of `tracker.csv`.
+2. Pull current numbers from KwickMetrics; never reuse old figures as live data.
+3. End of a conversation: log what was done — a new page in `activities/`, a new top row in
+   `tracker.csv`, an updated `STATE.md` — in one commit tagged with the AI tool that did the work.

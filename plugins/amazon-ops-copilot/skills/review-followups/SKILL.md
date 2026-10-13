@@ -1,32 +1,24 @@
 ---
 name: review-followups
 description: >
-  This skill should be used when the user asks "what follow-ups are due", "review last week's
-  change", "did the bid change work", "check open activities", "run the weekly review", or invokes
-  /review-followups. It finds tracker activities whose follow-up date has arrived, measures them
-  against their success criteria with live KwickMetrics data, and logs the result as a Review.
+  This skill should be used when the seller asks "what follow-ups are due", "did last week's change
+  work", "check open activities", "what's pending", or invokes /review-followups. It finds tracker
+  activities whose follow-up date has arrived, compares them with live KwickMetrics data, and logs
+  the result.
 metadata:
-  version: "0.1.0"
+  version: "0.5.0"
 ---
 
-# Follow-up Review
+# Review Follow-ups
 
-Follow `operating-rules` and read the tracker as described in `log-activity`.
-
-1. **Find what is due.** Read the tracker. List rows with Status Open, Scheduled or Monitoring and a
-   Follow-up date on or before today, oldest first. If none are due, say so and show the next
-   three upcoming dates.
-2. **For each due activity** (or the one the user names):
-   - Open its page. Take the metrics, success criteria and rollback condition from sections 5
-     and 7, and the before-state from section 4 or the Change Record.
-   - Pull the same metrics live for the comparable window after the activity, using the same tools
-     and filters as the original page. Respect latency: end the window 3 days before today.
-   - Build a before / after table per brand with the change and % change.
-   - Verdict: **Met**, **Partly met**, **Not met**, or **Too early** (window still settling).
-   - If a rollback condition has tripped, say so in the first sentence and offer a rollback
-     proposal through `propose-change`. Never roll back without approval.
-3. **Report**: verdicts first, then the tables, then at most three next actions.
-4. **Log** (with permission) one **Review** activity covering the reviewed IDs. Then, for each
-   reviewed activity, update its row's Status and Follow-up in place and append
-   `Review note (YYYY-MM-DD, ACT-XXX)` to the end of its page with the verdict and the key
-   numbers. Never edit the original figures.
+1. **Find what is due.** Read `tracker.csv` in **${user_config.tracker_repo}**. List rows with
+   Status Open, Scheduled or Monitoring and a Follow-up date on or before today, oldest first. If
+   none are due, say so and list the next three dates.
+2. **Check each one** (or the one the seller names): open its page, take what was done and what
+   "worked" was supposed to look like, then pull the same numbers from KwickMetrics for the period
+   since. Ads data takes 2–3 days to settle; say so if the window is too recent.
+3. **Report** per activity: before → now, and a plain verdict — worked, partly worked, didn't work,
+   or too early to tell.
+4. **Record it** with `log-activity` as one **Review** activity. Then update each reviewed row's
+   Status and Follow-up in place, and add a dated `Review note (YYYY-MM-DD, ACT-NNN)` at the end
+   of its page. Never change the original page's figures.

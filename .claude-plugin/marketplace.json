@@ -1,6 +1,6 @@
 {
   "name": "amazon-ops-kit",
-  "description": "Plugins for running an Amazon seller business with Claude and KwickMetrics.",
+  "description": "Shared activity memory for Amazon sellers using KwickMetrics with any AI tool.",
   "owner": {
     "name": "Amazon Ops Copilot maintainers"
   },
@@ -8,9 +8,14 @@
     {
       "name": "amazon-ops-copilot",
       "source": "./plugins/amazon-ops-copilot",
-      "description": "Target reviews, approved PPC changes, a GitHub activity tracker and an impact dashboard, on live KwickMetrics data.",
+      "description": "Saves every Amazon business session you do with KwickMetrics to your private GitHub repo, so every AI tool you use already knows what you did.",
       "category": "ecommerce",
-      "tags": ["amazon", "kwickmetrics", "ppc", "seller"]
+      "tags": [
+        "amazon",
+        "kwickmetrics",
+        "activity-tracker",
+        "shared-memory"
+      ]
     }
   ]
 }

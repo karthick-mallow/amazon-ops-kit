@@ -4,7 +4,7 @@
 
 - **Header:** title "Impact Dashboard", subtitle `<marketplace> · KwickMetrics data to <last
   complete day> · snapshot <UTC time> · today is partial and not plotted`.
-- **Brand switch** (segmented control): one button per in-scope brand, plus "All in-scope". "All"
+- **Brand switch** (segmented control): one button per account in `config.md`, plus "All". "All"
   draws one line per brand in its own colour — never a summed line.
 - **Main panel (about 78% width on desktop, full width on mobile):**
   - Toolbar: Metric (Sales, Ad spend, Orders, ACoS, TACoS) · Style (Area, Line, Bar) · Range

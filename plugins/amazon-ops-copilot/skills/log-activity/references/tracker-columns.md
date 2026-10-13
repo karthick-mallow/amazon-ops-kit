@@ -11,7 +11,7 @@ ID,Date (UTC),Type,Brand,Marketplace,ASIN,SKU,KwickMetrics focus,Summary,Follow-
 | ID | `ACT-XXX`, zero-padded, sequential |
 | Date (UTC) | `YYYY-MM-DD HH:MM`, true UTC — must match the page header |
 | Type | Brainstorming / Analysis / Diagnosis / Change / Review |
-| Brand | A single in-scope brand name, or `Both` / `All` when the activity covers every in-scope brand — never blank |
+| Brand | The brand or account the activity is about, or `All` when it covers every account — never blank |
 | Marketplace | Amazon domain, e.g. `amazon.in`; `All` if it spans every connected marketplace — never blank |
 | ASIN | ASINs covered, separated by `;`; `All` for whole account(s); `All <LINE>` for a product line — never blank |
 | SKU | Seller SKUs covered, separated by `;` (for a campaign: every enabled advertised SKU); same `All` rules — never blank |

@@ -2,12 +2,7 @@
 
 Last updated: {{UPDATED_UTC}} — {{ACT_ID}} — {{AI_CLIENT}}
 
-> History, not live data. Re-pull every figure from KwickMetrics before using it.
-
-## This month
-
-- Target: see `config.md`.
-- Last measured position: not yet measured.
+> History, not live data. Re-pull any figure from KwickMetrics before using it.
 
 ## Open follow-ups
 
@@ -15,16 +10,12 @@ Last updated: {{UPDATED_UTC}} — {{ACT_ID}} — {{AI_CLIENT}}
 |---|---|---|
 | — | — | None yet |
 
-## Changes being monitored
+## Changes being watched
 
-| ID | Entity | Change | Rollback condition | Review on |
-|---|---|---|---|---|
-| — | — | — | — | — |
+| ID | What changed | Before → after | Check on |
+|---|---|---|---|
+| — | — | — | — |
 
-## Blockers and open questions
-
-- None recorded.
-
-## Next planned actions
+## Next steps
 
 - None recorded.
