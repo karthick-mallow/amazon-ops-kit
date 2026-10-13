@@ -56,3 +56,5 @@ Tell the seller, in three short lines:
   open. Report the count imported against the source; leave the original untouched.
 - **Connect another AI tool:** point them to the "Connect an AI tool" section of the repo's
   `README.md` for the tool they name.
+- **Update my AGENTS.md** (after a plugin update): replace the repo's `AGENTS.md`, `README.md` and
+  `TEMPLATE.md` with the plugin's latest copies, keeping everything else, and say what changed.
