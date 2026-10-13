@@ -1,0 +1,33 @@
+{
+  "name": "amazon-ops-copilot",
+  "displayName": "Amazon Ops Copilot",
+  "version": "0.4.0",
+  "description": "Run an Amazon seller business with KwickMetrics live data: target reviews, approved PPC changes, an activity tracker kept in GitHub, and an impact dashboard.",
+  "author": {
+    "name": "Amazon Ops Copilot maintainers"
+  },
+  "license": "MIT",
+  "keywords": [
+    "amazon",
+    "seller",
+    "kwickmetrics",
+    "ppc",
+    "activity-tracker",
+    "github"
+  ],
+  "userConfig": {
+    "tracker_repo": {
+      "type": "string",
+      "title": "Tracker GitHub repository",
+      "description": "Your private GitHub folder for notes, as username/folder-name, e.g. priya-sells/amazon-ops-tracker.",
+      "required": true
+    },
+    "github_token": {
+      "type": "string",
+      "title": "GitHub token",
+      "description": "Fine-grained GitHub token with Contents: Read and write on that one repository.",
+      "sensitive": true,
+      "required": true
+    }
+  }
+}

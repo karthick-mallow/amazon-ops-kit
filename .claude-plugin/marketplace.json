@@ -1,0 +1,16 @@
+{
+  "name": "amazon-ops-kit",
+  "description": "Plugins for running an Amazon seller business with Claude and KwickMetrics.",
+  "owner": {
+    "name": "Amazon Ops Copilot maintainers"
+  },
+  "plugins": [
+    {
+      "name": "amazon-ops-copilot",
+      "source": "./plugins/amazon-ops-copilot",
+      "description": "Target reviews, approved PPC changes, a GitHub activity tracker and an impact dashboard, on live KwickMetrics data.",
+      "category": "ecommerce",
+      "tags": ["amazon", "kwickmetrics", "ppc", "seller"]
+    }
+  ]
+}
