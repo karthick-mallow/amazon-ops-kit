@@ -7,14 +7,21 @@ description: >
   a goal such as "my target this month is …" or "keep ACoS under 30%". It loads what the seller has
   already done from their GitHub tracker so they never have to explain it again.
 metadata:
-  version: "0.5.0"
+  version: "0.6.0"
 ---
 
 # Load Context
 
-The seller's history lives in their private GitHub repo **${user_config.tracker_repo}**. It is
+The seller's history lives in their private GitHub tracker repo (see below). It is
 shared by every AI tool they use (Claude, ChatGPT, Codex, Gemini, Grok…), so it may contain work
 done in other tools since this conversation began. Read it through the GitHub connector.
+
+## Finding the tracker repo
+
+The tracker is the private GitHub repo **`<GitHub username>/amazon-ops-tracker`**. Get the
+username with the GitHub connector's `get_me`, then open that repo. If it isn't there, look for a
+repo the connector can access that contains `AGENTS.md` and `tracker.csv`. If the seller names a
+different repo in the conversation, use that one.
 
 ## 1. At the start — read before answering
 

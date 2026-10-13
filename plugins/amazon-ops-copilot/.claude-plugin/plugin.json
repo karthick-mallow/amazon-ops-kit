@@ -1,7 +1,7 @@
 {
   "name": "amazon-ops-copilot",
   "displayName": "Amazon Ops Copilot",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "description": "Shared memory for Amazon sellers who use KwickMetrics. Every analysis, decision and change you make with Claude is saved to your private GitHub repo, so Claude, ChatGPT, Grok and other AI tools pick up where you left off without you explaining it again.",
   "author": {
     "name": "Amazon Ops Copilot maintainers"
@@ -14,20 +14,5 @@
     "activity-tracker",
     "shared-memory",
     "github"
-  ],
-  "userConfig": {
-    "tracker_repo": {
-      "type": "string",
-      "title": "Tracker GitHub repository",
-      "description": "Your private GitHub folder for notes, as username/folder-name, e.g. priya-sells/amazon-ops-tracker.",
-      "required": true
-    },
-    "github_token": {
-      "type": "string",
-      "title": "GitHub token",
-      "description": "Fine-grained GitHub token with Contents: Read and write on that one repository.",
-      "sensitive": true,
-      "required": true
-    }
-  }
+  ]
 }

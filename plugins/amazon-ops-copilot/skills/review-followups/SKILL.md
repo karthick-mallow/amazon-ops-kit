@@ -6,12 +6,12 @@ description: >
   activities whose follow-up date has arrived, compares them with live KwickMetrics data, and logs
   the result.
 metadata:
-  version: "0.5.0"
+  version: "0.6.0"
 ---
 
 # Review Follow-ups
 
-1. **Find what is due.** Read `tracker.csv` in **${user_config.tracker_repo}**. List rows with
+1. **Find what is due.** Read `tracker.csv` in the seller's tracker repo (found as in `load-context`). List rows with
    Status Open, Scheduled or Monitoring and a Follow-up date on or before today, oldest first. If
    none are due, say so and list the next three dates.
 2. **Check each one** (or the one the seller names): open its page, take what was done and what

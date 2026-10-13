@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.6.0 — 2026-10-13
+
+- No plugin settings. The Claude app doesn't show plugin settings boxes, so the tracker is found by
+  name: `<GitHub username>/amazon-ops-tracker` (via the GitHub connector's `get_me`).
+- GitHub connector no longer expects a token from settings; sellers add it as an `Authorization`
+  request header when connecting github on the plugin's Connectors tab.
+- Setup can fetch the tracker template from the public kit repo if the plugin folder can't be read.
+
 ## 0.5.0 — 2026-10-13
 
 - Refocused on one job: shared activity memory across AI tools. The plugin reads the seller's

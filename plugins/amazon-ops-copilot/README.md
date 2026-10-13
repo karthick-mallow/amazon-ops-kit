@@ -19,16 +19,21 @@ Goals are yours to set, by just saying them, e.g. "My target this month is ₹8,
 ACoS under 30%". Claude saves them in the tracker and every AI tool sees them.
 
 Connectors: **KwickMetrics** (`https://mcp.api.kwickmetrics.com`) and **GitHub**
-(`https://api.githubcopilot.com/mcp/`, using the token you enter in the plugin settings).
+(`https://api.githubcopilot.com/mcp/`).
 
 ## Setup
 
-1. Install: in Claude, **Customize → Plugins → + Add → Add marketplace**, enter
-   `karthick-mallow/amazon-ops-kit`, then add **Amazon Ops Copilot**. In Claude Code:
-   `/plugin install amazon-ops-copilot --marketplace karthick-mallow/amazon-ops-kit`.
-2. Fill in the two settings: **Tracker GitHub repository** (`username/amazon-ops-tracker`) and
-   **GitHub token** (fine-grained, **Contents: Read and write** on that repo only).
-3. Run `/setup`.
+1. Create a private GitHub repo named exactly `amazon-ops-tracker`, and a fine-grained GitHub token
+   with **Contents: Read and write** on that repo only.
+2. In Claude, **Customize → Plugins → + Add → Add marketplace**, enter
+   `karthick-mallow/amazon-ops-kit`, then add **Amazon Ops Copilot**.
+3. Open the plugin's **Connectors** tab:
+   - **KwickMetrics → Connect**, and sign in.
+   - **github → Connect → Continue**. Under **Authentication** choose **No sign-in**. Under
+     **Request headers** add `Authorization` = `Bearer <your token>`. Click **Add**.
+4. In a Cowork task, run `/setup`. It asks no questions.
+
+The plugin has no settings. It finds your tracker at `<your GitHub username>/amazon-ops-tracker`.
 
 ## Your tracker repo
 

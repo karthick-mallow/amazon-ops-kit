@@ -7,7 +7,7 @@ description: >
   Amazon Ops Copilot skill finds the tracker missing. It prepares the seller's private GitHub
   tracker repo without asking any questions.
 metadata:
-  version: "0.5.0"
+  version: "0.6.0"
 ---
 
 # Setup
@@ -16,15 +16,21 @@ Do the whole setup without asking the seller anything. Report at the end in a fe
 
 ## 1. Check the two connections
 
-- **GitHub:** open **${user_config.tracker_repo}**. If that fails, stop and tell the seller in
-  plain words: the GitHub token in the plugin's settings is missing, expired, or doesn't have
-  **Contents: Read and write** on that repo. Never ask them to paste a token in chat.
+- **GitHub:** call `get_me` to get the seller's username, then open
+  `<username>/amazon-ops-tracker` (or another repo the connector can access that already holds
+  `AGENTS.md`). If GitHub isn't connected, or the repo can't be opened, stop and tell the seller in
+  plain words: on the plugin's **Connectors** tab, connect **github** with their key, and make sure
+  their private repo is named `amazon-ops-tracker` and the key has **Contents: Read and write** on
+  it. Never ask them to paste a key in chat.
 - **KwickMetrics:** call `get_accounts`. If it fails, tell the seller to connect KwickMetrics in
-  Claude's connectors and sign in, then run `/setup` again.
+  the plugin's **Connectors** tab and sign in, then run `/setup` again.
 
 ## 2. Create the tracker files
 
-Copy every file from `${CLAUDE_PLUGIN_ROOT}/skills/setup/tracker-template/` into the repo:
+Copy every file from the `tracker-template/` folder that sits next to this skill
+(`${CLAUDE_PLUGIN_ROOT}/skills/setup/tracker-template/`; if that path can't be read, fetch the same
+folder from the public repo `karthick-mallow/amazon-ops-kit` at
+`plugins/amazon-ops-copilot/skills/setup/tracker-template/`) into the tracker repo:
 `AGENTS.md`, `README.md`, `PROMPT.md`, `CLAUDE.md`, `GEMINI.md`, `.github/copilot-instructions.md`,
 `config.md`, `STATE.md`, `LESSONS.md`, `TEMPLATE.md`, `tracker.csv`, `activities/.gitkeep`.
 
@@ -32,7 +38,7 @@ Fill in, without asking:
 - `config.md` → the **KwickMetrics accounts** table from `get_accounts` (name, slug, marketplace,
   ads connected yes/no) and `Updated`. Leave **Goals and preferences** empty; the seller sets
   goals later by chatting.
-- `PROMPT.md` → replace `OWNER/REPO` with ${user_config.tracker_repo}.
+- `PROMPT.md` → replace `OWNER/REPO` with the tracker repo's full name.
 - `STATE.md` → `Last updated: <now UTC> — setup — Claude / <model>`.
 
 **If the repo already has a tracker:** add only missing files. Never overwrite `tracker.csv`,
@@ -43,7 +49,7 @@ Commit as `Set up Amazon Activity Tracker`.
 ## 3. Finish
 
 Tell the seller, in three short lines:
-- The tracker is ready in ${user_config.tracker_repo}, with the KwickMetrics accounts it found.
+- The tracker is ready in `<username>/amazon-ops-tracker`, with the KwickMetrics accounts it found.
 - From now on every conversation about their business is saved there automatically, and any AI
   tool connected to the repo picks up from it.
 - They can set goals any time by just saying them, e.g. "My target this month is ₹8,00,000".

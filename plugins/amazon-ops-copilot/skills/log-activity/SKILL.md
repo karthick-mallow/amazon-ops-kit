@@ -7,13 +7,13 @@ description: >
   Also when the user says "log this", "save this", "add it to the tracker", or invokes
   /log-activity. It writes the activity to the seller's GitHub tracker so every AI tool can see it.
 metadata:
-  version: "0.5.0"
+  version: "0.6.0"
 ---
 
 # Log Activity
 
-Write what happened to the seller's tracker repo **${user_config.tracker_repo}** through the
-GitHub connector, following the repo's `AGENTS.md` (the protocol every AI tool uses). Never store
+Write what happened to the seller's tracker repo — `<GitHub username>/amazon-ops-tracker`, found
+as in `load-context` — through the GitHub connector (`push_files` writes all files in one commit), following the repo's `AGENTS.md` (the protocol every AI tool uses). Never store
 the log anywhere else.
 
 ## 1. When
