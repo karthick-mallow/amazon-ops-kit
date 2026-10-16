@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.8.1 — 2026-10-16
+
+- Recommended AI tools: Claude (main), Codex, Cursor and Grok. The tracker's `README.md` gives
+  step-by-step connection for each; ChatGPT, Gemini CLI, Copilot and Claude Code move to
+  "Other tools (advanced)".
+- `AGENTS.md` gains section 0, "First conversation": any AI tool sets up a new tracker by asking
+  the one data-source question, so Codex, Cursor and Grok users don't need Claude to start.
+- Tools working on a local clone (Codex, Cursor) pull before and push right after each entry.
+- Public template repo `karthick-mallow/amazon-ops-tracker-template` for "Use this template".
+
 ## 0.8.0 — 2026-10-16
 
 - Works with any data source: KwickMetrics (still the built-in default connector), any other

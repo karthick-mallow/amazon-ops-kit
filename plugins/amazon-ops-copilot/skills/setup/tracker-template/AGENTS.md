@@ -1,9 +1,9 @@
 # AGENTS.md — Amazon Activity Tracker
 
 This repository is the shared memory of an Amazon seller business. It records every analysis,
-decision and change the seller makes with any AI assistant — Claude, ChatGPT / Codex, Gemini,
-Grok, Copilot, Cursor or another — so whichever tool they open next already knows what has been
-done and the seller never has to explain it again.
+decision and change the seller makes with any AI assistant — Claude, Codex, Grok, Cursor or
+another — so whichever tool they open next already knows what has been done and the seller never
+has to explain it again.
 
 It works with any data source: a connected tool (KwickMetrics, another seller tool, Amazon Ads or
 any MCP connector) or reports the seller downloads from Seller Central or the Ads console and
@@ -12,6 +12,29 @@ uploads. `config.md` lists the seller's sources.
 Every AI tool reads and writes this repository the same way, as described below.
 
 ---
+
+## 0. First conversation — set up the tracker if it isn't yet
+
+If `config.md` still contains `{{` placeholders (or its **Data sources** table has no real row),
+the tracker hasn't been set up. Before anything else, whichever AI tool you are:
+
+1. Ask the seller **one question only**, as a short numbered list (more than one answer is fine):
+   *"Where does your Amazon data come from? 1. A seller tool I can connect to (e.g. KwickMetrics)
+   — which one? 2. Reports you download from Seller Central or the Ads console. 3. Both."*
+   Ask nothing else — no targets, thresholds or preferences.
+2. If the named tool is connected to you, use it to list the seller's accounts (name, ID or slug,
+   marketplace). Otherwise leave **Accounts** to be filled from the first reports or brand names
+   the seller shares.
+3. Fill `config.md` (**Data sources**, **Accounts**, `Updated`), replace `OWNER/REPO` in
+   `PROMPT.md` with this repository's full name, and set `STATE.md`'s first line to
+   `Last updated: <YYYY-MM-DD HH:MM UTC> — setup — <AI tool> / <AI model>`. Leave goals empty.
+4. Commit `Set up Amazon Activity Tracker [<AI tool> / <AI model>]` (push it, if you work on a
+   local clone).
+5. Tell the seller in three lines: the tracker is ready with the data source and accounts found;
+   changes made through a connected tool are saved automatically, anything else only with their
+   OK; goals can be set any time by just saying them.
+
+The seller can change the data source later by saying so; update the same two tables.
 
 ## 1. Start of every conversation — read first
 
@@ -59,7 +82,7 @@ in one sentence.
    three digits. Never reuse an ID.
 2. **Page.** Write `activities/ACT-NNN.md` from `TEMPLATE.md`: eight sections, same headings, same
    order; empty sections read `Not applicable — <reason>`. In the header, record **AI Tool** (your
-   app's name, e.g. Claude, ChatGPT, Grok, Gemini), **AI Model** (your exact model name, e.g.
+   app's name, e.g. Claude, Codex, Grok, Cursor), **AI Model** (your exact model name, e.g.
    Claude Opus 5.5), **Data Source**, and how it was logged (automatically or with approval).
    Include the tools called or reports used, date range, snapshot time (UTC), the numbers that
    mattered, decisions, and for a change the exact before → after values.
@@ -81,6 +104,8 @@ in one sentence.
    ID, your AI tool and model.
 5. **LESSONS.md.** Append a lesson only if something was learned that should change future work.
 6. **Commit** all files together: `ACT-NNN: <Type> — <short title> [<AI tool> / <AI model>]`.
+   Working on a local clone (Codex, Cursor)? Pull first, then commit and push straight away, so
+   the other tools see it.
 7. Tell the seller: `Saved to your tracker as ACT-NNN.`
 
 **Checking a follow-up:** pull the same numbers from the same source as the original activity (for
@@ -114,5 +139,6 @@ new Review activity; in the original row update Status and Follow-up in place; a
 | `tracker.csv` | One row per activity, newest first |
 | `activities/ACT-NNN.md` | One page per activity |
 | `TEMPLATE.md` | The activity page format |
-| `PROMPT.md` | Starter prompt for chat apps that don't read repo files on their own |
+| `PROMPT.md` | Starter prompt for chat apps that don't read repo files on their own (e.g. Grok) |
+| `README.md` | For the seller: which AI tools to use and how to connect each one |
 | `CLAUDE.md`, `GEMINI.md`, `.github/copilot-instructions.md` | Point those tools to this file |

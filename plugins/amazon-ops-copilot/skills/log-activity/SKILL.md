@@ -9,7 +9,7 @@ description: >
   logs only after the seller approves. Also when the user says "log this", "save this", or invokes
   /log-activity.
 metadata:
-  version: "0.8.0"
+  version: "0.8.1"
 ---
 
 # Log Activity

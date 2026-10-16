@@ -3,7 +3,7 @@
 * Brand: <brand or account name | All>
 * Marketplace: <amazon domain>
 * Executed By: <user's name>
-* AI Tool: <e.g. Claude, ChatGPT, Grok, Gemini>
+* AI Tool: <e.g. Claude, Codex, Grok, Cursor>
 * AI Model: <exact model name, e.g. Claude Opus 5.5>
 * Logged: <Automatically (change via <tool name>) | With the seller's approval>
 * Focus: <PPC | SEO | Inventory | Financials | Buy Box | Listings | Pricing | Returns>

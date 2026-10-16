@@ -2,8 +2,8 @@
 
 Shared memory and follow-through for Amazon sellers who use AI. Every change you make through a
 connected tool, and any analysis or decision you choose to keep, is saved to your own private
-GitHub repo, with the AI tool, model and data source behind it. Claude, ChatGPT, Grok, Gemini and
-other AI tools read that repo first, so whichever one you open already knows what you've done, and
+GitHub repo, with the AI tool, model and data source behind it. Claude, Codex, Grok and Cursor read
+that repo first, so whichever one you open already knows what you've done, and
 you never have to explain it again.
 
 **Works with any data source:** KwickMetrics (built in as the default connector), any other MCP

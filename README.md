@@ -1,9 +1,13 @@
 # Amazon Ops Kit
 
 Shared memory and follow-through for Amazon sellers who use AI tools. Everything a seller does —
-analyses, decisions, changes — is logged to their own private GitHub repo, which Claude, ChatGPT /
-Codex, Gemini, Grok, Copilot or Cursor all read first. Whichever tool they open already knows what
-was done, so they never have to explain it again.
+analyses, decisions, changes — is logged to their own private GitHub repo, which every AI tool
+reads first. Whichever tool they open already knows what was done, so they never have to explain
+it again.
+
+**Recommended AI tools:** **Claude** (main tool, with this plugin) · **Codex** (second opinion,
+deeper analysis) · **Cursor** (report files, bulk edits) · **Grok** (quick checks on the phone).
+Others that read `AGENTS.md` work too, but aren't part of the recommended set.
 
 It works with **any data source**: KwickMetrics (built in as the default connector), any other MCP
 connector, or reports downloaded from Seller Central or the Ads console and uploaded in the chat.
@@ -33,16 +37,17 @@ claude plugin install amazon-ops-copilot@amazon-ops-kit
 
 Then run `/setup`. It creates your private tracker repo from the template.
 
-## Start without Claude
+## Start with Codex, Cursor or Grok
 
-1. Create a new **private** GitHub repo.
-2. Copy everything in `plugins/amazon-ops-copilot/skills/setup/tracker-template/` into it,
-   including `.github/`.
-3. In `config.md`, fill in the **Data sources** table (your connector, or "Uploaded reports") and
-   the **Accounts** table.
-4. Replace `OWNER/REPO` in `PROMPT.md`.
-5. Connect your AI tool to the repo — and to your data connector, if you use one — using the table
-   in the template's `README.md`.
+1. Open [karthick-mallow/amazon-ops-tracker-template](https://github.com/karthick-mallow/amazon-ops-tracker-template),
+   click **Use this template → Create a new repository**, name it `amazon-ops-tracker` and choose
+   **Private**. (Or copy everything in `plugins/amazon-ops-copilot/skills/setup/tracker-template/`
+   into a new private repo, including `.github/`.)
+2. Connect your tool to the repo — and to your data connector, if you use one — following the
+   steps for that tool in the new repo's `README.md`.
+3. Start a conversation. On a new tracker the AI asks one question — where your data comes from —
+   and sets everything up (`AGENTS.md`, section 0). Adding Claude later is fine: `/setup` keeps
+   what is there.
 
 ## How the shared memory works
 

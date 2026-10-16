@@ -9,13 +9,13 @@ description: >
   or "keep ACoS under 30%". It loads what the seller has already done from their GitHub tracker so
   they never have to explain it again.
 metadata:
-  version: "0.8.0"
+  version: "0.8.1"
 ---
 
 # Load Context
 
 The seller's history lives in their private GitHub tracker repo (see below). It is shared by every
-AI tool they use (Claude, ChatGPT, Codex, Gemini, Grok…), so it may contain work done in other
+AI tool they use (Claude, Codex, Grok, Cursor…), so it may contain work done in other
 tools since this conversation began. Read it through the GitHub connector.
 
 ## Finding the tracker repo

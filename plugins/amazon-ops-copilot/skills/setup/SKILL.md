@@ -3,11 +3,11 @@ name: setup
 description: >
   This skill should be used when the user says "set up Amazon Ops Copilot", "set up my tracker",
   "create my activity tracker", "import my tracker into GitHub", "change my data source", "use the
-  tracker with ChatGPT / Codex / Gemini / Grok", "connect another AI tool", or invokes /setup, and
+  tracker with Codex / Grok / Cursor", "connect another AI tool", or invokes /setup, and
   whenever another Amazon Ops Copilot skill finds the tracker missing. It prepares the seller's
   private GitHub tracker repo and asks one question: where their Amazon data comes from.
 metadata:
-  version: "0.8.0"
+  version: "0.8.1"
 ---
 
 # Setup
