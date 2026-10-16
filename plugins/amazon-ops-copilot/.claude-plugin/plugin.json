@@ -1,8 +1,8 @@
 {
   "name": "amazon-ops-copilot",
   "displayName": "Amazon Ops Copilot",
-  "version": "0.7.0",
-  "description": "Shared memory for Amazon sellers who use KwickMetrics. Changes made through KwickMetrics are logged automatically, and analyses or decisions you approve, to your private GitHub repo, with the AI tool and model that did them. Claude checks the last 90 days before suggesting anything, and ChatGPT, Grok and other AI tools pick up the same history.",
+  "version": "0.8.0",
+  "description": "Shared memory and follow-through for Amazon sellers who use AI, with any data source: KwickMetrics (built in), another connector, or reports you upload. Changes made through a connected tool are logged automatically, and analyses or decisions you approve, to your private GitHub repo, with the AI tool, model and data source. Claude checks the last 90 days before suggesting anything, reviews whether changes worked, and ChatGPT, Grok and other AI tools pick up the same history.",
   "author": {
     "name": "Amazon Ops Copilot maintainers"
   },
@@ -10,9 +10,10 @@
   "keywords": [
     "amazon",
     "seller",
-    "kwickmetrics",
     "activity-tracker",
     "shared-memory",
-    "github"
+    "github",
+    "mcp",
+    "kwickmetrics"
   ]
 }

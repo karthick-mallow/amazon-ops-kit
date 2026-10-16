@@ -1,20 +1,22 @@
 ---
 name: load-context
 description: >
-  This skill should be used at the start of any conversation about the seller's Amazon business or
-  KwickMetrics, and always before suggesting or recommending anything — sales, ads, PPC, inventory, listings, profit, ratings — and whenever the user asks
-  "what did we do last time", "what's pending", "remind me what we changed", "catch me up", or sets
-  a goal such as "my target this month is …" or "keep ACoS under 30%". It loads what the seller has
-  already done from their GitHub tracker so they never have to explain it again.
+  This skill should be used at the start of any conversation about the seller's Amazon business —
+  whether the data comes from KwickMetrics, another connected tool or uploaded reports — and always
+  before suggesting or recommending anything — sales, ads, PPC, inventory, listings, pricing,
+  profit, ratings — and whenever the user asks "what did we do last time", "what's pending",
+  "remind me what we changed", "catch me up", or sets a goal such as "my target this month is …"
+  or "keep ACoS under 30%". It loads what the seller has already done from their GitHub tracker so
+  they never have to explain it again.
 metadata:
-  version: "0.7.0"
+  version: "0.8.0"
 ---
 
 # Load Context
 
-The seller's history lives in their private GitHub tracker repo (see below). It is
-shared by every AI tool they use (Claude, ChatGPT, Codex, Gemini, Grok…), so it may contain work
-done in other tools since this conversation began. Read it through the GitHub connector.
+The seller's history lives in their private GitHub tracker repo (see below). It is shared by every
+AI tool they use (Claude, ChatGPT, Codex, Gemini, Grok…), so it may contain work done in other
+tools since this conversation began. Read it through the GitHub connector.
 
 ## Finding the tracker repo
 
@@ -25,7 +27,7 @@ different repo in the conversation, use that one.
 
 ## 1. At the start — read before answering
 
-1. `config.md` — the seller's KwickMetrics accounts and any goals they have set.
+1. `config.md` — the seller's accounts, data sources and any goals they have set.
 2. `STATE.md` — where things stand: open follow-ups, changes being watched, next steps.
 3. `LESSONS.md` — what earlier work taught.
 4. `tracker.csv` — the activity list, newest first.
@@ -49,10 +51,18 @@ pricing or inventory move, or a plan), check the tracker first:
 
 Never skip this check, even for a quick suggestion.
 
-## 3. History is not live data
+## 3. Current numbers — from the data source
 
-Numbers in the tracker are what was true when they were logged. For any current figure, pull it
-from KwickMetrics now. When comparing with an earlier activity, show both and label which is which.
+Numbers in the tracker are what was true when they were logged. For any current figure:
+
+1. Use the source listed in `config.md` → **Data sources** if it is connected (KwickMetrics or any
+   other connector).
+2. Otherwise ask the seller for the specific report — name it and the date range, e.g. "the
+   Sponsored Products search term report for the last 30 days from the Ads console" — and work
+   from the uploaded file.
+3. Label each figure with its source (tool, or report file and date range). When comparing with
+   an earlier activity, show both and label which is which.
+4. Never guess a figure you couldn't get; say what's missing.
 
 ## 4. Goals and preferences — saved only when the seller says so
 
@@ -68,5 +78,5 @@ never invent one.
 
 ## 5. Logging
 
-Follow `log-activity`: KwickMetrics changes are logged automatically right after they happen;
-anything else is logged only if the seller approves when asked at the end.
+Follow `log-activity`: changes made through a connected tool are logged automatically right after
+they happen; anything else is logged only if the seller approves when asked at the end.

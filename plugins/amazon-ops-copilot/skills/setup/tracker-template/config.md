@@ -2,13 +2,21 @@
 
 Updated: {{YYYY-MM-DD HH:MM UTC}}
 
-## KwickMetrics accounts
+## Data sources
 
-Filled in automatically from KwickMetrics during setup.
+Where current numbers come from. Set during setup; change any time by telling the AI.
 
-| Account | Slug | Marketplace | Ads connected |
+| Source | How it's used | Notes |
+|---|---|---|
+| {{e.g. KwickMetrics}} | {{Connector / Uploaded reports}} | {{e.g. ads and sales for both brands}} |
+
+## Accounts
+
+Filled in from the connected source during setup, or from the first reports the seller shares.
+
+| Account | ID / slug | Marketplace | Source |
 |---|---|---|---|
-| {{name}} | {{slug}} | {{amazon.xx}} | {{Yes/No}} |
+| {{name}} | {{slug or seller ID}} | {{amazon.xx}} | {{source}} |
 
 ## Goals and preferences
 

@@ -5,11 +5,12 @@
 * Executed By: <user's name>
 * AI Tool: <e.g. Claude, ChatGPT, Grok, Gemini>
 * AI Model: <exact model name, e.g. Claude Opus 5.5>
-* Logged: <Automatically (KwickMetrics change) | With the seller's approval>
-* KwickMetrics Focus: <PPC | SEO | Inventory | Financials | Buy Box>
+* Logged: <Automatically (change via <tool name>) | With the seller's approval>
+* Focus: <PPC | SEO | Inventory | Financials | Buy Box | Listings | Pricing | Returns>
+* Data Source: <connected tool name, e.g. KwickMetrics | Report: <report name> (<start>–<end>) | Seller | None>
 * Reporting Window: <exact date range, or "snapshot as of <timestamp>">
 * Related Activities: <ACT-XXX, ACT-XXX — or "None">
-* MCP Tools Used: `tool_one`, `tool_two`
+* Tools / Reports Used: `tool_one`, `tool_two` — or the report file names
 
 ## 1. Objective
 
@@ -24,7 +25,7 @@ Why the work was done now: the trigger, the decision it feeds, and any prior act
 
 ## 3. Data Sources
 
-* MCP report(s): `tool_name` — filters applied
+* Source(s): `tool_name` with filters applied — or the uploaded report file name and type
 * Date range: <exact start and end>
 * Brands analysed: <brands>
 * Accounts: <slug (n SKUs), slug (n SKUs)>

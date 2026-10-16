@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.8.0 — 2026-10-16
+
+- Works with any data source: KwickMetrics (still the built-in default connector), any other
+  connector, or reports the seller downloads and uploads. When nothing is connected, the AI asks
+  for the specific report and labels every figure with its source.
+- `/setup` asks one question — where the seller's data comes from — and records the answer in a
+  new **Data sources** table in `config.md`. KwickMetrics is no longer required; only GitHub is.
+- Automatic logging covers changes made through any connected tool, not only KwickMetrics.
+- Follow-up reviews re-check the same source; for reports they ask for the same report covering
+  the newer dates, and say "no data yet" rather than guess.
+- Impact dashboard can be built from uploaded daily reports.
+- `tracker.csv`: `KwickMetrics focus` renamed `Focus`; new `Data source` column after it. Pages
+  gain a `Data Source` header line. Older trackers are brought up to date with `Not recorded` in
+  the new column ("Update my AGENTS.md").
+
 ## 0.7.0 — 2026-10-13
 
 - Changes made through KwickMetrics are logged automatically; analysis, diagnosis, plans and

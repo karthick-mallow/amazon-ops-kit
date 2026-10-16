@@ -2,7 +2,7 @@
 
 ## Layout
 
-- **Header:** title "Impact Dashboard", subtitle `<marketplace> · KwickMetrics data to <last
+- **Header:** title "Impact Dashboard", subtitle `<marketplace> · <data source> data to <last
   complete day> · snapshot <UTC time> · today is partial and not plotted`.
 - **Brand switch** (segmented control): one button per account in `config.md`, plus "All". "All"
   draws one line per brand in its own colour — never a summed line.
@@ -43,6 +43,6 @@
 
 ## Data notes printed under the chart
 
-- Sources: tool names, date range, snapshot time.
+- Sources: tool names or report files, date range, snapshot time.
 - "Before / after numbers on cards are copied from tracker pages and are not recalculated here."
 - Any brand or day with missing data, stated plainly.

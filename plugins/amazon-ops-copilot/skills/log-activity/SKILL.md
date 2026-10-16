@@ -1,33 +1,36 @@
 ---
 name: log-activity
 description: >
-  This skill should be used immediately after any KwickMetrics write action (a bid, budget,
-  campaign, keyword, target, negative, day-parting, rule, portfolio or listing change), which it
-  logs automatically, and at the end of any conversation with other work worth keeping (analysis,
-  diagnosis, a plan, or a change made outside KwickMetrics), which it logs only after the seller
-  approves. Also when the user says "log this", "save this", or invokes /log-activity.
+  This skill should be used immediately after any change made through a connected tool to the
+  seller's Amazon account, ads or listings (KwickMetrics or any other connector — a bid, budget,
+  campaign, keyword, target, negative, day-parting, rule, portfolio, price or listing change),
+  which it logs automatically, and at the end of any conversation with other work worth keeping
+  (analysis, diagnosis, a plan, work from uploaded reports, or a change made by hand), which it
+  logs only after the seller approves. Also when the user says "log this", "save this", or invokes
+  /log-activity.
 metadata:
-  version: "0.7.0"
+  version: "0.8.0"
 ---
 
 # Log Activity
 
 Write what happened to the seller's tracker repo — `<GitHub username>/amazon-ops-tracker`, found
-as in `load-context` — through the GitHub connector (`push_files` writes all files in one commit), following the repo's `AGENTS.md` (the protocol every AI tool uses). Never store
-the log anywhere else.
+as in `load-context` — through the GitHub connector (`push_files` writes all files in one commit),
+following the repo's `AGENTS.md` (the protocol every AI tool uses). Never store the log anywhere
+else.
 
 ## 1. When — automatic or with approval
 
 | What happened | Log it |
 |---|---|
-| A **change made through KwickMetrics** — any KwickMetrics tool that creates, updates, pauses, deletes, negates, applies, links or publishes something | **Automatically and immediately**, right after the change, without asking. One activity per change request (several entities changed together = one activity). |
-| **Anything else** worth keeping — analysis, diagnosis, brainstorming, a plan, a follow-up review, or a change the seller made **outside KwickMetrics** (e.g. in Seller Central) | **Only with approval.** At the end of the conversation, ask once in one line: *"Shall I save this to your tracker as an Analysis?"* (name the type). Log only if the seller says yes. |
+| A **change made through a connected tool** — any call to KwickMetrics or another connector that creates, updates, pauses, deletes, negates, applies, links or publishes something in the seller's Amazon account, ads or listings | **Automatically and immediately**, right after the change, without asking. One activity per change request (several entities changed together = one activity). The GitHub writes that save the log don't count. |
+| **Anything else** worth keeping — analysis, diagnosis, brainstorming, a plan, a follow-up review, work done from uploaded reports, or a change the seller made **by hand** (e.g. in Seller Central) | **Only with approval.** At the end of the conversation, ask once in one line: *"Shall I save this to your tracker as an Analysis?"* (name the type). Log only if the seller says yes. |
 | Small talk, general how-to questions, nothing decided | Don't log, don't ask. |
 
 - If the seller says "log this", that is approval. If they say "don't log this", don't — not even
   an automatic change log for that request.
 - After saving, tell the seller in one line: `Saved to your tracker as ACT-NNN.`
-- Record which way it was logged on the page (`Logged: Automatically (KwickMetrics change)` or
+- Record which way it was logged on the page (`Logged: Automatically (change via <tool name>)` or
   `Logged: With the seller's approval`).
 
 ## 2. Activity ID
@@ -46,20 +49,24 @@ Write `activities/ACT-NNN.md` from the repo's `TEMPLATE.md` (fallback:
 `${CLAUDE_PLUGIN_ROOT}/skills/setup/tracker-template/TEMPLATE.md`): all eight sections, same order
 and headings; a section with nothing to say reads `Not applicable — <reason>`.
 
-- Header: the seller's name if known, **AI Tool = `Claude`** and **AI Model = your exact model
-  name** (e.g. `Claude Opus 5.5`). Never leave them blank.
-- Record what was actually seen and done: KwickMetrics tools called, date range, snapshot time
-  (UTC), the numbers that mattered, decisions, and for a Change the exact before → after values.
-- Follow-up: a date to check the result (default +7 days) and what "worked" would look like.
+- Header: the seller's name if known, **AI Tool = `Claude`**, **AI Model = your exact model name**
+  (e.g. `Claude Opus 5.5`) and **Data Source** — never blank.
+- Record what was actually seen and done: the tools called or the report files used (name and
+  date range), snapshot time (UTC), the numbers that mattered with their source, decisions, and
+  for a Change the exact before → after values.
+- Follow-up: a date to check the result (default +7 days), what "worked" would look like, and
+  which source or report the check needs.
 
 ## 5. The tracker row
 
 Insert directly under the header row of `tracker.csv`, columns per
-`references/tracker-columns.md` — including **AI tool** (`Claude`) and **AI model** (your exact model
-name). No column is left blank (`All` where it covers everything).
+`references/tracker-columns.md` — including **AI tool** (`Claude`), **AI model** (your exact model
+name) and **Data source**. No column is left blank (`All` where it covers everything).
 
-If the repo's `tracker.csv` header has no `AI tool` / `AI model` columns yet (older tracker), add
-them after `Date (UTC)` and fill `Not recorded` for the older rows, in the same commit.
+If the repo's `tracker.csv` header is older (no `AI tool` / `AI model`, or `KwickMetrics focus`
+without `Data source`), bring it up to date in the same commit as `AGENTS.md` describes: add the
+missing columns, rename `KwickMetrics focus` to `Focus`, fill `Not recorded` in new columns for
+older rows, and change nothing else.
 
 ## 6. STATE.md and LESSONS.md
 
@@ -71,8 +78,8 @@ them after `Date (UTC)` and fill `Not recorded` for the older rows, in the same 
 ## 7. Commit
 
 One commit with the page, `tracker.csv` and `STATE.md` (plus `LESSONS.md` if changed):
-`ACT-NNN: <Type> — <short title> [Claude / <model name>]`. If the write is rejected because a file changed,
-re-read, take the next free ID, and retry. Never overwrite another tool's entries.
+`ACT-NNN: <Type> — <short title> [Claude / <model name>]`. If the write is rejected because a file
+changed, re-read, take the next free ID, and retry. Never overwrite another tool's entries.
 
 If GitHub cannot be reached, give the seller the page and CSV row as ready-to-save text and say
 plainly that nothing was saved yet.

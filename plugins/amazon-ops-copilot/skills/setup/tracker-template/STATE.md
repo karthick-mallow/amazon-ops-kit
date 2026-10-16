@@ -2,7 +2,7 @@
 
 Last updated: {{UPDATED_UTC}} — {{ACT_ID}} — {{AI_CLIENT}}
 
-> History, not live data. Re-pull any figure from KwickMetrics before using it.
+> History, not live data. Re-pull any figure from your data source before using it.
 
 ## Open follow-ups
 

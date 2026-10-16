@@ -1,6 +1,6 @@
 {
   "name": "amazon-ops-kit",
-  "description": "Shared activity memory for Amazon sellers using KwickMetrics with any AI tool.",
+  "description": "Shared activity memory for Amazon sellers using any AI tool and any data source.",
   "owner": {
     "name": "Amazon Ops Copilot maintainers"
   },
@@ -8,13 +8,14 @@
     {
       "name": "amazon-ops-copilot",
       "source": "./plugins/amazon-ops-copilot",
-      "description": "Saves every Amazon business session you do with KwickMetrics to your private GitHub repo, so every AI tool you use already knows what you did.",
+      "description": "Saves what you do in your Amazon business with AI to your private GitHub repo, from any data source (KwickMetrics, another connector, or uploaded reports), so every AI tool you use already knows what you did.",
       "category": "ecommerce",
       "tags": [
         "amazon",
-        "kwickmetrics",
         "activity-tracker",
-        "shared-memory"
+        "shared-memory",
+        "mcp",
+        "kwickmetrics"
       ]
     }
   ]
