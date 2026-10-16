@@ -35,7 +35,7 @@ one question (see `AGENTS.md`, section 0).
    `karthick-mallow/amazon-ops-kit` → add **Amazon Ops Copilot**.
 2. On the plugin's **Connectors** tab: **github** → No sign-in, request header
    `Authorization: Bearer <your key>`. Connect your data tool too (KwickMetrics is listed there).
-3. In a Cowork task, type `/setup`.
+3. In a Cowork task, type **Set up my tracker**. Claude asks one question and finishes setup.
 
 ### Codex
 

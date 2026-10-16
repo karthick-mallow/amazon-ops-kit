@@ -9,7 +9,7 @@ description: >
   or "keep ACoS under 30%". It loads what the seller has already done from their GitHub tracker so
   they never have to explain it again.
 metadata:
-  version: "0.8.1"
+  version: "0.8.2"
 ---
 
 # Load Context
@@ -32,7 +32,9 @@ different repo in the conversation, use that one.
 3. `LESSONS.md` — what earlier work taught.
 4. `tracker.csv` — the activity list, newest first.
 
-If `config.md` is missing, the tracker is not set up yet: run the `setup` skill. If GitHub cannot
+If `config.md` is missing, or still has `{{` placeholders (a fresh copy of the template), the
+tracker is not set up yet: run the `setup` skill first — it asks the seller one question and fills
+everything in. The seller doesn't need to type `/setup`. If GitHub cannot
 be reached, say so in one line, make no suggestions that depend on past work, and carry on.
 
 ## 2. Before suggesting anything — check the last 90 days

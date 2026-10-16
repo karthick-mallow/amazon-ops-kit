@@ -23,7 +23,18 @@ Two parts:
    (other work with approval), reviews follow-ups, draws an impact dashboard, and sets the repo up
    with one question: where the seller's data comes from.
 
-## Start with Claude
+## Setup — the same three steps for every tool
+
+1. **Make your tracker:** open
+   [karthick-mallow/amazon-ops-tracker-template](https://github.com/karthick-mallow/amazon-ops-tracker-template),
+   click **Use this template → Create a new repository**, name it `amazon-ops-tracker`, choose
+   **Private**.
+2. **Connect your AI tool** to it — and to your data connector, if you use one. Claude: the plugin
+   below. Codex, Cursor, Grok: the steps in the new repo's `README.md`.
+3. **Type "Set up my tracker".** On a fresh tracker the AI asks one question — where your data
+   comes from — and finishes setup by itself.
+
+### Claude
 
 **Claude desktop app / Cowork:** add this repository as a plugin marketplace (Customize → Plugins →
 Add marketplace → `karthick-mallow/amazon-ops-kit`) and add **Amazon Ops Copilot**.
@@ -35,19 +46,17 @@ claude plugin marketplace add karthick-mallow/amazon-ops-kit
 claude plugin install amazon-ops-copilot@amazon-ops-kit
 ```
 
-Then run `/setup`. It creates your private tracker repo from the template.
+Then connect **github** (and your data tool) on the plugin's **Connectors** tab, and type "Set up
+my tracker" in a Cowork task.
 
-## Start with Codex, Cursor or Grok
+### Codex, Cursor, Grok
 
-1. Open [karthick-mallow/amazon-ops-tracker-template](https://github.com/karthick-mallow/amazon-ops-tracker-template),
-   click **Use this template → Create a new repository**, name it `amazon-ops-tracker` and choose
-   **Private**. (Or copy everything in `plugins/amazon-ops-copilot/skills/setup/tracker-template/`
-   into a new private repo, including `.github/`.)
-2. Connect your tool to the repo — and to your data connector, if you use one — following the
-   steps for that tool in the new repo's `README.md`.
-3. Start a conversation. On a new tracker the AI asks one question — where your data comes from —
-   and sets everything up (`AGENTS.md`, section 0). Adding Claude later is fine: `/setup` keeps
-   what is there.
+Follow the steps for your tool in the tracker repo's `README.md`. On a fresh tracker the first
+conversation asks the one question and sets everything up (`AGENTS.md`, section 0). Several tools
+can share one tracker; adding another later keeps everything that is there.
+
+No template? Copying everything in `plugins/amazon-ops-copilot/skills/setup/tracker-template/`
+(including `.github/`) into a new private repo gives the same result.
 
 ## How the shared memory works
 

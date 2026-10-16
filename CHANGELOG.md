@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.8.2 — 2026-10-16
+
+- One setup path for every tool: create the tracker from the template repo (**Use this
+  template**), connect your AI tool, type "Set up my tracker". Any tool finishes setup on a fresh
+  tracker; Claude also does it when a conversation about the business starts on one. `/setup`
+  still works, and still copies files into an empty repo.
+
 ## 0.8.1 — 2026-10-16
 
 - Recommended AI tools: Claude (main), Codex, Cursor and Grok. The tracker's `README.md` gives

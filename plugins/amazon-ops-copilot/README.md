@@ -18,7 +18,7 @@ or the Ads console and upload in the chat.
 | Log activity | Automatically right after any change made through a connected tool; for anything else, after you say yes | Saves the activity to your GitHub tracker with the AI tool, model and data source, and tells you the ID |
 | Review follow-ups | `/review-followups` | Checks whether earlier changes worked, with fresh numbers from the same source (or an updated report) |
 | Impact dashboard | `/impact-dashboard` | Charts your sales and ad spend with every logged activity marked on it |
-| Setup | `/setup` | Creates the tracker in your GitHub repo. Asks one question: where your data comes from |
+| Setup | Automatically on a fresh tracker, or `/setup` | Finishes setting up your tracker repo. Asks one question: where your data comes from |
 
 Goals are yours to set, by just saying them, e.g. "My target this month is ₹8,00,000" or "Keep
 ACoS under 30%". Claude saves them in the tracker and every AI tool sees them.
@@ -28,8 +28,10 @@ Connectors: **GitHub** (`https://api.githubcopilot.com/mcp/`, required) and **Kw
 
 ## Setup
 
-1. Create a private GitHub repo named exactly `amazon-ops-tracker`, and a fine-grained GitHub token
-   with **Contents: Read and write** on that repo only.
+1. Open [karthick-mallow/amazon-ops-tracker-template](https://github.com/karthick-mallow/amazon-ops-tracker-template),
+   click **Use this template → Create a new repository**, name it exactly `amazon-ops-tracker`,
+   choose **Private**. Then make a fine-grained GitHub token with **Contents: Read and write** on
+   that repo only.
 2. In Claude, **Customize → Plugins → + Add → Add marketplace**, enter
    `karthick-mallow/amazon-ops-kit`, then add **Amazon Ops Copilot**.
 3. Open the plugin's **Connectors** tab:
@@ -37,7 +39,8 @@ Connectors: **GitHub** (`https://api.githubcopilot.com/mcp/`, required) and **Kw
      **Request headers** add `Authorization` = `Bearer <your token>`. Click **Add**.
    - **If you use KwickMetrics:** **KwickMetrics → Connect**, and sign in. Using another tool?
      Add it under Customize → Connectors. Using reports? Nothing to connect.
-4. In a Cowork task, run `/setup` and answer its one question.
+4. In a Cowork task, type **Set up my tracker** (or ask anything about your business). Claude asks
+   one question — where your data comes from — and finishes setup. (`/setup` does the same.)
 
 Claude Code: `/plugin install amazon-ops-copilot --marketplace karthick-mallow/amazon-ops-kit`
 

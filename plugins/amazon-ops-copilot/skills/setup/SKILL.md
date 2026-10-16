@@ -7,7 +7,7 @@ description: >
   whenever another Amazon Ops Copilot skill finds the tracker missing. It prepares the seller's
   private GitHub tracker repo and asks one question: where their Amazon data comes from.
 metadata:
-  version: "0.8.1"
+  version: "0.8.2"
 ---
 
 # Setup
@@ -49,7 +49,10 @@ else `Uploaded reports`, and say which was chosen.
 
 ## 3. Create the tracker files
 
-Copy every file from the `tracker-template/` folder that sits next to this skill
+Most sellers create their repo from the template
+(`karthick-mallow/amazon-ops-tracker-template` → **Use this template**), so the files are already
+there: skip copying and go straight to "Fill in" below. Only if the repo is empty or files are
+missing, copy every file from the `tracker-template/` folder that sits next to this skill
 (`${CLAUDE_PLUGIN_ROOT}/skills/setup/tracker-template/`; if that path can't be read, fetch the same
 folder from the public repo `karthick-mallow/amazon-ops-kit` at
 `plugins/amazon-ops-copilot/skills/setup/tracker-template/`) into the tracker repo:
