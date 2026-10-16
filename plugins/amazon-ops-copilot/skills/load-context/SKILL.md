@@ -9,7 +9,7 @@ description: >
   or "keep ACoS under 30%". It loads what the seller has already done from their GitHub tracker so
   they never have to explain it again.
 metadata:
-  version: "0.8.2"
+  version: "0.8.3"
 ---
 
 # Load Context
@@ -20,10 +20,17 @@ tools since this conversation began. Read it through the GitHub connector.
 
 ## Finding the tracker repo
 
-The tracker is the private GitHub repo **`<GitHub username>/amazon-ops-tracker`**. Get the
-username with the GitHub connector's `get_me`, then open that repo. If it isn't there, look for a
-repo the connector can access that contains `AGENTS.md` and `tracker.csv`. If the seller names a
-different repo in the conversation, use that one.
+Pick the tracker in this order:
+
+1. A repo the seller names in the conversation (e.g. "use karthick/amazon-ops-tracker-test").
+2. **`<GitHub username>/amazon-ops-tracker`** — get the username with the GitHub connector's
+   `get_me`.
+3. Otherwise, a **private** repo the seller owns that contains `AGENTS.md` and `tracker.csv`.
+   Never use a public repo, and never the template itself (`amazon-ops-tracker-template`) — it is
+   the blank starting copy, not anyone's tracker.
+
+If step 3 finds more than one, list them and ask the seller once which is their tracker; suggest
+renaming it to `amazon-ops-tracker` so it is found automatically next time.
 
 ## 1. At the start — read before answering
 

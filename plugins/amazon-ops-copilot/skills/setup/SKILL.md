@@ -7,7 +7,7 @@ description: >
   whenever another Amazon Ops Copilot skill finds the tracker missing. It prepares the seller's
   private GitHub tracker repo and asks one question: where their Amazon data comes from.
 metadata:
-  version: "0.8.2"
+  version: "0.8.3"
 ---
 
 # Setup
@@ -18,8 +18,9 @@ a few lines.
 
 ## 1. Check GitHub
 
-Call `get_me` to get the seller's username, then open `<username>/amazon-ops-tracker` (or another
-repo the connector can access that already holds `AGENTS.md`). If GitHub isn't connected, or the
+Find the tracker repo exactly as `load-context` describes (a repo the seller names, else
+`<username>/amazon-ops-tracker`, else one private repo of theirs holding `AGENTS.md` — never a
+public repo or the template itself). If GitHub isn't connected, or the
 repo can't be opened, stop and tell the seller in plain words: on the plugin's **Connectors** tab,
 connect **github** with their key, and make sure their private repo is named `amazon-ops-tracker`
 and the key has **Contents: Read and write** on it. Never ask them to paste a key in chat.

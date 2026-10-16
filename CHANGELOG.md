@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.8.3 — 2026-10-16
+
+- Safer tracker lookup: a repo the seller names wins; then `<username>/amazon-ops-tracker`; then
+  one private repo holding `AGENTS.md` and `tracker.csv`. Public repos and the template repo are
+  never used as a tracker; if several candidates exist, Claude asks once which one.
+
 ## 0.8.2 — 2026-10-16
 
 - One setup path for every tool: create the tracker from the template repo (**Use this
