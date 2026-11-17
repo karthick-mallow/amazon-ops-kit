@@ -1,0 +1,63 @@
+# Checks tracker.csv and config.md against the tracker schema on every change.
+# On failure it opens (or comments on) one issue labelled `tracker-check`, which AI tools read at
+# the start of a conversation; on a pass it closes that issue. See AGENTS.md, "Tracker check".
+name: Check tracker
+
+on:
+  push:
+    paths:
+      - tracker.csv
+      - config.md
+      - "activities/**"
+      - .github/workflows/check-tracker.yml
+      - .github/scripts/check_tracker.py
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: check-tracker-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check schema and rows
+        id: check
+        continue-on-error: true
+        run: python3 .github/scripts/check_tracker.py --report "$RUNNER_TEMP/report.md"
+
+      - name: Open, update or close the tracker-check issue
+        if: always()
+        continue-on-error: true   # repos with Issues turned off still get the run result
+        env:
+          GH_TOKEN: ${{ github.token }}
+          OUTCOME: ${{ steps.check.outcome }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          set -euo pipefail
+          report="$RUNNER_TEMP/report.md"
+          printf '\nCommit `%s` · [run](%s)\n' "${GITHUB_SHA::7}" "$RUN_URL" >> "$report"
+          open_issue=$(gh issue list --label tracker-check --state open --json number --jq '.[0].number // empty' || true)
+          if [ "$OUTCOME" = "success" ]; then
+            if [ -n "$open_issue" ]; then
+              gh issue close "$open_issue" --comment "$(cat "$report")"
+            fi
+          else
+            if [ -n "$open_issue" ]; then
+              gh issue comment "$open_issue" --body-file "$report"
+            else
+              gh label create tracker-check --color D93F0B \
+                --description "Tracker schema check failed" --force >/dev/null
+              gh issue create --title "Tracker check failed" --label tracker-check --body-file "$report"
+            fi
+          fi
+
+      - name: Fail the run if the check failed
+        if: steps.check.outcome != 'success'
+        run: exit 1

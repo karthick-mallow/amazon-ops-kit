@@ -1,6 +1,7 @@
 # Seller settings
 
 Updated: {{YYYY-MM-DD HH:MM UTC}}
+Tracker schema: 4
 
 ## Data sources
 

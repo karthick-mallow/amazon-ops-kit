@@ -82,8 +82,18 @@ rules. They aren't part of the recommended set.
 ### GitHub keys
 
 Use a fine-grained personal access token limited to **this repository** with **Contents: Read and
-write**. Give each tool its own key so you can revoke one without affecting the others. Never
-paste a key into a chat.
+write**. Optional: **Issues: Read-only**, so the AI can see when the tracker check fails, and
+**Workflows: Read and write**, needed only when an AI adds the tracker check to a tracker made
+before 0.10.0. Give each tool its own key so you can revoke one without affecting the others.
+Never paste a key into a chat.
+
+### Tracker check
+
+Every push that touches `tracker.csv`, `config.md` or `activities/` runs a short check on GitHub
+(**Actions → Check tracker**). If an entry breaks the format, it opens an issue labelled
+`tracker-check` listing what's wrong. Say *"Fix the tracker check issue"* to any connected AI
+tool; it fixes only the formatting and never changes figures. The issue closes itself on the next
+passing run.
 
 Whether a data provider accepts sign-in from a given AI tool is up to that provider. If a tool
 cannot connect, ask the provider's support, or work from uploaded reports.

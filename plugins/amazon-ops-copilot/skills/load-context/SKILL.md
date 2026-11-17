@@ -9,7 +9,7 @@ description: >
   or "keep ACoS under 30%". It loads what the seller has already done from their GitHub tracker so
   they never have to explain it again.
 metadata:
-  version: "0.9.0"
+  version: "0.10.0"
 ---
 
 # Load Context
@@ -38,6 +38,9 @@ renaming it to `amazon-ops-tracker` so it is found automatically next time.
 2. `STATE.md` — where things stand: open follow-ups, changes being watched, next steps.
 3. `LESSONS.md` — what earlier work taught.
 4. `tracker.csv` — the activity list, newest first.
+5. Open issues labelled `tracker-check` (GitHub connector, if the key can read issues). If one is
+   open, tell the seller in one line and offer to fix it as `AGENTS.md` section 7 describes — only
+   what the issue lists, never figures, with their OK.
 
 If `config.md` is missing, or still has `{{` placeholders (a fresh copy of the template), the
 tracker is not set up yet: run the `setup` skill first — it asks the seller one question and fills

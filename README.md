@@ -70,6 +70,9 @@ No template? Copying everything in `plugins/amazon-ops-copilot/skills/setup/trac
 Every page and commit records which AI tool and model did the work, who asked for it (User), how
 the request came in (Mode: Chat, Voice or Schedule) and where the numbers came from, so a session in Codex on Monday and one in Claude on Tuesday continue the same thread.
 
+The tracker carries a schema version (`Tracker schema` in `config.md`) and a GitHub Action that
+checks every push against it; a failure opens a `tracker-check` issue the AI tools pick up.
+
 ## Repository layout
 
 ```
@@ -79,6 +82,7 @@ plugins/amazon-ops-copilot/
   .mcp.json                                      GitHub (required) + KwickMetrics (default data source)
   skills/                                        five skills
   skills/setup/tracker-template/                 the shared tracker repo template
+  skills/setup/tracker-template/.github/         tracker check (GitHub Action + script)
 CHANGELOG.md
 ```
 

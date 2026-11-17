@@ -31,7 +31,7 @@ Connectors: **GitHub** (`https://api.githubcopilot.com/mcp/`, required) and **Kw
 1. Open [karthick-mallow/amazon-ops-tracker-template](https://github.com/karthick-mallow/amazon-ops-tracker-template),
    click **Use this template → Create a new repository**, name it exactly `amazon-ops-tracker`,
    choose **Private**. Then make a fine-grained GitHub token with **Contents: Read and write** on
-   that repo only.
+   that repo only (add **Issues: Read-only** so Claude can see when the tracker check fails).
 2. In Claude, **Customize → Plugins → + Add → Add marketplace**, enter
    `karthick-mallow/amazon-ops-kit`, then add **Amazon Ops Copilot**.
 3. Open the plugin's **Connectors** tab:

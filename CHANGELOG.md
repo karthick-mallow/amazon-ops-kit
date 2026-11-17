@@ -1,5 +1,36 @@
 # Changelog
 
+## 0.10.0 — 2026-11-17
+
+Kit and template ship this version together. No `tracker.csv` column changes (schema stays 4).
+
+### Added
+- **Schema version:** `config.md` gains `Tracker schema: 4`. AI tools read it before every write
+  and migrate step by step from it (`AGENTS.md` section 7, with the schema 1–4 history); the
+  header is only inspected when the line is missing. A tracker newer than the AI's instructions
+  is never written to.
+- **Tracker check:** a GitHub Action (`.github/workflows/check-tracker.yml`, standard-library
+  Python in `.github/scripts/check_tracker.py`) runs on every push touching `tracker.csv`,
+  `config.md` or `activities/`. It checks the header, column count, blank cells, ID / date /
+  follow-up formats, allowed Type / Mode / Status / Focus values, and that each Page exists. On
+  failure it opens one issue labelled `tracker-check`; the next pass closes it. Rows from before
+  User/Mode (`User = unknown`) get warnings, not errors, for old values.
+- AI tools look for an open `tracker-check` issue at the start of a conversation and, with the
+  seller's OK, fix only what it lists — never figures.
+- `KwickMetrics focus` → `Focus` (0.8.0) is recorded as the one legacy rename; columns are
+  otherwise only added.
+
+### Migration — existing seller trackers
+1. Optional: add **Issues: Read-only** to each tool's GitHub key so the AI sees check failures,
+   and **Workflows: Read and write** to the key Claude uses, so it can add the check.
+2. Tell Claude "update my AGENTS.md". In one commit it updates the instructions, migrates the
+   tracker to schema 4 if needed, adds `Tracker schema: 4` to `config.md`, and adds the two check
+   files. Without the Workflows permission it adds everything else and tells you; you can then
+   copy `.github/workflows/check-tracker.yml` from the template repo by hand.
+3. The first push runs the check. If it opens a `tracker-check` issue, say "fix the tracker check
+   issue".
+Grok users: re-paste `PROMPT.md`.
+
 ## 0.9.0 — 2026-11-17
 
 Kit (amazon-ops-kit, Amazon Ops Copilot plugin) and template (amazon-ops-tracker-template) ship

@@ -16,5 +16,5 @@ tracker isn't set up yet, follow the "First conversation" section of `AGENTS.md`
 numbers use my data source listed in `config.md`; if you can't reach it, ask me for the report you
 need and say where each figure came from. Log every change made through a connected tool
 automatically; ask me before logging anything else. Record your AI tool, exact model name, who asked (the
-name from `config.md`'s Users), the mode (Chat, Voice or Schedule) and the data source in each entry, and tell me the activity ID. If you can't write to the repository, give
+name from `config.md`'s Users), the mode (Chat, Voice or Schedule) and the data source in each entry, and tell me the activity ID. If an open issue labelled `tracker-check` exists, tell me and offer to fix it. If you can't write to the repository, give
 me the entry as ready-to-save text.

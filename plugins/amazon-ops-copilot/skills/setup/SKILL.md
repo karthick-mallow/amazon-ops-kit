@@ -7,7 +7,7 @@ description: >
   whenever another Amazon Ops Copilot skill finds the tracker missing. It prepares the seller's
   private GitHub tracker repo and asks one question: where their Amazon data comes from.
 metadata:
-  version: "0.9.0"
+  version: "0.10.0"
 ---
 
 # Setup
@@ -23,7 +23,8 @@ Find the tracker repo exactly as `load-context` describes (a repo the seller nam
 public repo or the template itself). If GitHub isn't connected, or the
 repo can't be opened, stop and tell the seller in plain words: on the plugin's **Connectors** tab,
 connect **github** with their key, and make sure their private repo is named `amazon-ops-tracker`
-and the key has **Contents: Read and write** on it. Never ask them to paste a key in chat.
+and the key has **Contents: Read and write** on it (optional: **Issues: Read-only** to see tracker
+check failures, **Workflows: Read and write** to add the check to an older tracker). Never ask them to paste a key in chat.
 
 ## 2. Ask the one question — the data source
 
@@ -58,7 +59,10 @@ missing, copy every file from the `tracker-template/` folder that sits next to t
 folder from the public repo `karthick-mallow/amazon-ops-kit` at
 `plugins/amazon-ops-copilot/skills/setup/tracker-template/`) into the tracker repo:
 `AGENTS.md`, `README.md`, `PROMPT.md`, `CLAUDE.md`, `GEMINI.md`, `.github/copilot-instructions.md`,
-`config.md`, `STATE.md`, `LESSONS.md`, `TEMPLATE.md`, `tracker.csv`, `activities/.gitkeep`.
+`config.md`, `STATE.md`, `LESSONS.md`, `TEMPLATE.md`, `tracker.csv`, `activities/.gitkeep`,
+`.github/workflows/check-tracker.yml`, `.github/scripts/check_tracker.py`. Writing the workflow
+file needs the key to have **Workflows: Read and write**; if it's refused, copy the rest and tell
+the seller how to add it (or to add the file by hand).
 
 Fill in:
 - `config.md` → the **Data sources** table (each source the seller chose, how it's used —
@@ -94,10 +98,9 @@ Tell the seller, in three short lines:
 - **Connect another AI tool:** point them to the "Connect an AI tool" section of the repo's
   `README.md` for the tool they name.
 - **Update my AGENTS.md** (after a plugin update): replace the repo's `AGENTS.md`, `README.md`,
-  `PROMPT.md` and `TEMPLATE.md` with the plugin's latest copies, keeping everything else. Bring
-  `tracker.csv`'s header up to date: add `AI tool` / `AI model` after `Date (UTC)` and `User` /
-  `Mode` after `AI model` if missing, rename `KwickMetrics focus` to `Focus`, add `Data source` after `Focus` — `unknown` in `User` /
-  `Mode` and `Not recorded` in other new columns for older rows (never guessed), nothing else changed. If `config.md` has a `KwickMetrics accounts`
+  `PROMPT.md` and `TEMPLATE.md` with the plugin's latest copies, keeping everything else. Then
+  migrate the tracker to the current schema exactly as the new `AGENTS.md` section 7 describes
+  (schema from `Tracker schema` in `config.md`, or from the header if that line is missing), add the
+  check files if missing, and set `Tracker schema: 4`. If `config.md` has a `KwickMetrics accounts`
   section, turn it into the **Data sources** (KwickMetrics, Connector) and **Accounts** tables,
-  keeping the goals. Add a **Users** section (owner row) above **Goals and preferences** if missing.
-  Say what changed.
+  keeping the goals. Say what changed.

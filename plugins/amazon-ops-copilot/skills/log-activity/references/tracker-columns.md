@@ -29,6 +29,10 @@ ID,Date (UTC),AI tool,AI model,User,Mode,Type,Brand,Marketplace,ASIN,SKU,Focus,D
 CSV rules: quote any field containing a comma or quote; use `;` inside multi-value cells; newest
 row directly under the header.
 
-Older trackers: `KwickMetrics focus` is renamed `Focus`; `AI tool`, `AI model` and `Data source` are
-added with `Not recorded`, and `User` and `Mode` with `unknown`, for rows written before them. Never
-guess values for old rows.
+This is **schema 4** (`Tracker schema: 4` in `config.md`). Older trackers are migrated as
+`AGENTS.md` section 7 describes: `Not recorded` in `AI tool`, `AI model` and `Data source`, and
+`unknown` in `User` and `Mode`, for rows written before them — never guessed values.
+
+The tracker check (`.github/scripts/check_tracker.py`) enforces these rules on GitHub: header,
+column count, no blanks, ID / date / follow-up formats, the allowed Type, Mode, Status and Focus
+values, and that Page exists.
