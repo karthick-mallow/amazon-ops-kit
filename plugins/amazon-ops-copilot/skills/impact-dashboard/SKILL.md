@@ -7,7 +7,7 @@ description: >
   per account — from a connected tool or uploaded reports — with every tracker activity marked on
   the timeline, so the seller sees what each activity did.
 metadata:
-  version: "0.9.0"
+  version: "0.10.0"
 ---
 
 # Impact Dashboard

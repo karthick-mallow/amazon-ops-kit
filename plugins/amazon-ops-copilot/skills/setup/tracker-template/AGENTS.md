@@ -45,6 +45,7 @@ The seller can change the data source later by saying so; update the same two ta
 3. `LESSONS.md` — what earlier work taught.
 4. `tracker.csv` — every activity, newest first. For the topic at hand, open the related pages in
    `activities/` from the last 90 days.
+5. An open issue labelled `tracker-check`, if you can read this repo's issues — see section 7.
 
 **Before suggesting anything, always check the last 90 days.** Filter `tracker.csv` to the last
 90 days and to the same account, ASIN/SKU, campaign or area; open those pages; tell the seller in
@@ -137,20 +138,15 @@ worked, partly worked, didn't work, or too early / no data yet. With the seller'
 new Review activity; in the original row update Status and Follow-up in place; append
 `Review note (YYYY-MM-DD, ACT-NNN)` to the original page. Never change an old page's figures.
 
-**An older tracker** (header without `AI tool` / `AI model` / `User` / `Mode`, or with
-`KwickMetrics focus` and no `Data source`): before writing, bring the header up to date in the same
-commit — add `AI tool` and `AI model` after `Date (UTC)`, `User` and `Mode` after `AI model`,
-rename `KwickMetrics focus` to `Focus`, add `Data source` after it — and fill the new columns for
-older rows with `unknown` for `User` / `Mode` (`Not recorded` for the others). Never guess values
-for old rows. If `config.md` has no **Users** section, add it above **Goals and
-preferences** with the owner's row. Change nothing else in old rows.
+**Before writing anything**, check `Tracker schema` in `config.md` as section 7 describes, and
+bring an older tracker up to date in the same commit.
 
 ## 5. Several AI tools, one memory
 
 - Re-read `tracker.csv` and `STATE.md` just before writing. If a write is rejected because a file
   changed, re-read, take the next free ID, and retry. Never overwrite another tool's entries.
-- Never delete or rewrite old rows or pages, except the Status / Follow-up update, the review note
-  and the header update above.
+- Never delete or rewrite old rows or pages, except the Status / Follow-up update, the review note,
+  schema migrations and tracker-check fixes (section 7).
 - **Can read but not write here?** Give the seller the page, the CSV row and the `STATE.md` change
   as ready-to-save text, and say plainly that nothing was saved yet.
 
@@ -168,3 +164,46 @@ preferences** with the owner's row. Change nothing else in old rows.
 | `PROMPT.md` | Starter prompt for chat apps that don't read repo files on their own (e.g. Grok) |
 | `README.md` | For the seller: which AI tools to use and how to connect each one |
 | `CLAUDE.md`, `GEMINI.md`, `.github/copilot-instructions.md` | Point those tools to this file |
+| `.github/workflows/check-tracker.yml`, `.github/scripts/check_tracker.py` | The tracker check (section 7) |
+
+## 7. Schema versions and the tracker check
+
+`config.md` holds `Tracker schema: N` — the version of `tracker.csv`'s columns. The current
+schema is **4**.
+
+| Schema | Since | `tracker.csv` header change |
+|---|---|---|
+| 1 | before 0.7.0 | `ID,Date (UTC),Type,Brand,Marketplace,ASIN,SKU,KwickMetrics focus,Summary,Follow-up,Status,Page` |
+| 2 | 0.7.0 | adds `AI tool`, `AI model` after `Date (UTC)` |
+| 3 | 0.8.0 | renames `KwickMetrics focus` to `Focus` (the one legacy rename; columns are otherwise only added) and adds `Data source` after it |
+| 4 | 0.9.0 | adds `User`, `Mode` after `AI model`; `config.md` gains a **Users** section |
+
+**Before every write**, read `Tracker schema`:
+
+- **4** — carry on.
+- **Higher than 4** — this tracker is newer than these instructions. Don't write; tell the seller
+  to update the plugin or AGENTS.md first.
+- **Lower, or the line is missing** — migrate in the same commit as your entry (or on its own
+  when the seller says "update my AGENTS.md"). With the line missing, find the schema by matching
+  `tracker.csv`'s header to the table; if it matches none, don't write and tell the seller.
+
+**Migrating:** apply each step after the tracker's schema, in order. Older rows get `Not recorded`
+in `AI tool`, `AI model` and `Data source`, and `unknown` in `User` and `Mode` — never guessed
+values. Step 4 also adds the **Users** section above **Goals and preferences** (owner's row) if
+missing. Then set `Tracker schema: 4` under `Updated` and change nothing else in old rows. If the
+check files (section 6) are missing, add them from the template repo
+`karthick-mallow/amazon-ops-tracker-template`; writing `.github/workflows/` needs the key to have
+**Workflows: Read and write** — if that is refused, commit everything else and tell the seller once
+how to add it (`README.md`, "GitHub keys").
+
+**The tracker check** runs on GitHub after every push that touches `tracker.csv`, `config.md` or
+`activities/`. It checks the header against the schema, the column count, blank cells, ID, date
+and follow-up formats, the allowed values of Type, Mode, Status and Focus, and that each Page
+exists. When it fails it opens one issue labelled `tracker-check` listing the errors; the next
+passing run closes it. A failing check never blocks logging.
+
+If an open `tracker-check` issue exists, tell the seller in one line and offer to fix it. With
+their OK, fix only what the issue lists — quote a field, correct a format or a misspelt value, or
+fill a blank cell from the activity's own page — and never change figures. If a fix needs
+something the page doesn't say, ask the seller. Commit
+`Fix tracker check [<AI tool> / <AI model> · <User> · <Mode>]`.

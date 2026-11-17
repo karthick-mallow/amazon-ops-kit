@@ -9,7 +9,7 @@ description: >
   logs only after the seller approves. Also when the user says "log this", "save this", or invokes
   /log-activity.
 metadata:
-  version: "0.9.0"
+  version: "0.10.0"
 ---
 
 # Log Activity
@@ -76,12 +76,13 @@ Insert directly under the header row of `tracker.csv`, columns per
 `references/tracker-columns.md` — including **AI tool** (`Claude`), **AI model** (your exact model
 name), **User**, **Mode** and **Data source**. No column is left blank (`All` where it covers everything).
 
-If the repo's `tracker.csv` header is older (no `AI tool` / `AI model` / `User` / `Mode`, or
-`KwickMetrics focus` without `Data source`), bring it up to date in the same commit as `AGENTS.md`
-describes: add the missing columns (`User`, `Mode` go after `AI model`), rename `KwickMetrics focus`
-to `Focus`, fill older rows' new columns with `unknown` for `User` / `Mode` (`Not recorded` for the
-others) — never guessed values, add a **Users** section to
-`config.md` if missing (owner row), and change nothing else.
+Before writing, read `Tracker schema` in `config.md` and follow `AGENTS.md` section 7 (the plugin's
+copy if the repo's is older): **4** → carry on; **higher** → don't write, tell the seller to update
+the plugin; **lower or missing** → migrate in the same commit (older rows: `Not recorded` in
+AI tool / AI model / Data source, `unknown` in User / Mode, never guessed), set
+`Tracker schema: 4`, and add the check files if missing from
+`${CLAUDE_PLUGIN_ROOT}/skills/setup/tracker-template/.github/`. If writing the workflow file is
+refused (the key lacks **Workflows: Read and write**), commit the rest and tell the seller once.
 
 ## 6. STATE.md and LESSONS.md
 
