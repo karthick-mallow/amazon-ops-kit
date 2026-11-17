@@ -3,7 +3,7 @@
 `tracker.csv` header, in this order:
 
 ```csv
-ID,Date (UTC),AI tool,AI model,Type,Brand,Marketplace,ASIN,SKU,Focus,Data source,Summary,Follow-up,Status,Page
+ID,Date (UTC),AI tool,AI model,User,Mode,Type,Brand,Marketplace,ASIN,SKU,Focus,Data source,Summary,Follow-up,Status,Page
 ```
 
 | Column | Value |
@@ -12,6 +12,8 @@ ID,Date (UTC),AI tool,AI model,Type,Brand,Marketplace,ASIN,SKU,Focus,Data source
 | Date (UTC) | `YYYY-MM-DD HH:MM`, true UTC — must match the page header |
 | AI tool | The AI app that did the work, e.g. `Claude`, `Codex`, `Grok`, `Cursor` — never blank |
 | AI model | The exact model name, e.g. `Claude Opus 5.5` — as the tool reports it; `Unknown` only if the tool cannot tell |
+| User | The person who asked for or approved the work, as named in `config.md` → **Users**; unknown on an automatic log → the owner (first row); `Schedule` → who set up the scheduled task, else the owner — never blank |
+| Mode | `Chat` (typed), `Voice` (spoken request) or `Schedule` (started by a scheduled task / routine with no person sending it); unsure between Chat and Voice → `Chat` — never blank |
 | Type | Brainstorming / Analysis / Diagnosis / Change / Review |
 | Brand | The brand or account the activity is about, or `All` when it covers every account — never blank |
 | Marketplace | Amazon domain, e.g. `amazon.in`; `All` if it spans every marketplace — never blank |
@@ -27,5 +29,6 @@ ID,Date (UTC),AI tool,AI model,Type,Brand,Marketplace,ASIN,SKU,Focus,Data source
 CSV rules: quote any field containing a comma or quote; use `;` inside multi-value cells; newest
 row directly under the header.
 
-Older trackers: `KwickMetrics focus` is renamed `Focus`; `AI tool`, `AI model` and `Data source`
-are added with `Not recorded` for rows written before them.
+Older trackers: `KwickMetrics focus` is renamed `Focus`; `AI tool`, `AI model` and `Data source` are
+added with `Not recorded`, and `User` and `Mode` with `unknown`, for rows written before them. Never
+guess values for old rows.

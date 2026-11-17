@@ -19,7 +19,8 @@
   - Selecting a Change marker shades 7 days before (blue tint) and 7 days after (red tint).
 - **Side panel (about 22%):** activity cards, newest first, filtered by the current brand and
   annotation choices. Each card: ACT-ID, type, date, title, one-line summary, status pill, the AI
-  client that did the work (from the page header, e.g. Claude, Codex, Grok, Cursor), and for
+  client that did the work (from the page header, e.g. Claude, Codex, Grok, Cursor), the user and
+  mode (from the row's User / Mode, or the page's Executed By / Mode: `<User> · Chat / Voice / Schedule`; omit when `unknown` or `Not recorded`), and for
   Change / Review activities a small before / after table (metric, before, after, change) taken
   from the page. Cards with an open follow-up show "Waiting — review on <date>". Clicking a card
   selects its marker and scrolls the chart to it, and vice versa.

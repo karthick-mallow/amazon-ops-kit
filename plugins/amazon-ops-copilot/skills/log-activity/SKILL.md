@@ -9,7 +9,7 @@ description: >
   logs only after the seller approves. Also when the user says "log this", "save this", or invokes
   /log-activity.
 metadata:
-  version: "0.8.3"
+  version: "0.9.0"
 ---
 
 # Log Activity
@@ -30,8 +30,21 @@ else.
 - If the seller says "log this", that is approval. If they say "don't log this", don't — not even
   an automatic change log for that request.
 - After saving, tell the seller in one line: `Saved to your tracker as ACT-NNN.`
-- Record which way it was logged on the page (`Logged: Automatically (change via <tool name>)` or
-  `Logged: With the seller's approval`).
+- Record which way it was logged on the page (`Logged: Automatically (change via <tool name>)`,
+  `Logged: With the seller's approval`, or `Logged: By the scheduled task's instructions`).
+- **Scheduled run** (no person in the conversation): log changes made through a connected tool
+  automatically; anything else only if the scheduled task's instructions say to log it.
+
+## 1a. User and Mode — on every entry
+
+- **User:** the person who asked for or approved the work, by their name in the repo's
+  `config.md` → **Users**. Use the name they give or the name you know them by. If you can't tell
+  and you're asking the save question anyway, add "and under which name?". For an automatic log
+  where you can't tell, use the owner (first row of **Users**). Schedule mode: whoever set up the
+  scheduled task, else the owner. A name not yet listed → add a row to **Users** in the same commit.
+- **Mode:** `Chat` (typed in this conversation), `Voice` (the request was spoken — voice mode or
+  a dictated request marked as voice) or `Schedule` (this session was started by a scheduled task,
+  routine or trigger, not by a person's message). Unsure between Chat and Voice → `Chat`.
 
 ## 2. Activity ID
 
@@ -50,7 +63,7 @@ Write `activities/ACT-NNN.md` from the repo's `TEMPLATE.md` (fallback:
 and headings; a section with nothing to say reads `Not applicable — <reason>`.
 
 - Header: the seller's name if known, **AI Tool = `Claude`**, **AI Model = your exact model name**
-  (e.g. `Claude Opus 5.5`) and **Data Source** — never blank.
+  (e.g. `Claude Opus 5.5`), **Executed By** (= the User), **Mode** and **Data Source** — never blank.
 - Record what was actually seen and done: the tools called or the report files used (name and
   date range), snapshot time (UTC), the numbers that mattered with their source, decisions, and
   for a Change the exact before → after values.
@@ -61,24 +74,26 @@ and headings; a section with nothing to say reads `Not applicable — <reason>`.
 
 Insert directly under the header row of `tracker.csv`, columns per
 `references/tracker-columns.md` — including **AI tool** (`Claude`), **AI model** (your exact model
-name) and **Data source**. No column is left blank (`All` where it covers everything).
+name), **User**, **Mode** and **Data source**. No column is left blank (`All` where it covers everything).
 
-If the repo's `tracker.csv` header is older (no `AI tool` / `AI model`, or `KwickMetrics focus`
-without `Data source`), bring it up to date in the same commit as `AGENTS.md` describes: add the
-missing columns, rename `KwickMetrics focus` to `Focus`, fill `Not recorded` in new columns for
-older rows, and change nothing else.
+If the repo's `tracker.csv` header is older (no `AI tool` / `AI model` / `User` / `Mode`, or
+`KwickMetrics focus` without `Data source`), bring it up to date in the same commit as `AGENTS.md`
+describes: add the missing columns (`User`, `Mode` go after `AI model`), rename `KwickMetrics focus`
+to `Focus`, fill older rows' new columns with `unknown` for `User` / `Mode` (`Not recorded` for the
+others) — never guessed values, add a **Users** section to
+`config.md` if missing (owner row), and change nothing else.
 
 ## 6. STATE.md and LESSONS.md
 
 - `STATE.md`: update only the parts this activity changes — open follow-ups, changes being
-  watched, next steps. Set `Last updated: <YYYY-MM-DD HH:MM UTC> — ACT-NNN — Claude / <model name>`.
+  watched, next steps. Set `Last updated: <YYYY-MM-DD HH:MM UTC> — ACT-NNN — Claude / <model name> — <User> (<Mode>)`.
 - `LESSONS.md`: append a lesson only if this activity taught something that should change future
   work: `## YYYY-MM-DD — <title> (ACT-NNN)`.
 
 ## 7. Commit
 
-One commit with the page, `tracker.csv` and `STATE.md` (plus `LESSONS.md` if changed):
-`ACT-NNN: <Type> — <short title> [Claude / <model name>]`. If the write is rejected because a file
+One commit with the page, `tracker.csv` and `STATE.md` (plus `LESSONS.md` / `config.md` if changed):
+`ACT-NNN: <Type> — <short title> [Claude / <model name> · <User> · <Mode>]`. If the write is rejected because a file
 changed, re-read, take the next free ID, and retry. Never overwrite another tool's entries.
 
 If GitHub cannot be reached, give the seller the page and CSV row as ready-to-save text and say

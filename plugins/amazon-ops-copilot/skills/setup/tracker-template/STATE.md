@@ -1,6 +1,6 @@
 # Current state
 
-Last updated: {{UPDATED_UTC}} — {{ACT_ID}} — {{AI_CLIENT}}
+Last updated: {{UPDATED_UTC}} — {{ACT_ID}} — {{AI_CLIENT}} — {{USER}} ({{MODE}})
 
 > History, not live data. Re-pull any figure from your data source before using it.
 
