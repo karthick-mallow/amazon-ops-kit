@@ -1,6 +1,9 @@
 #!/usr/bin/env python3
 """Check the Amazon Activity Tracker against its schema (see AGENTS.md, "Schema versions").
 
+Kit-owned: replaced on every kit update — don't edit it in a tracker.
+Amazon Ops Copilot kit: 0.10.2
+
 Standard library only. Exit 0 = pass (warnings allowed), 1 = errors found.
 Usage: python3 .github/scripts/check_tracker.py [--root .] [--report report.md]
 """
@@ -23,7 +26,7 @@ ENUMS = {
     "Type": {"Brainstorming", "Analysis", "Diagnosis", "Change", "Review"},
     "Mode": {"Chat", "Voice", "Schedule"},
     "Status": {"Open", "Scheduled", "Monitoring", "Completed"},
-    "Focus": {"PPC", "SEO", "Inventory", "Financials", "Buy Box", "Listings", "Pricing", "Returns"},
+    "Focus": {"PPC", "SEO", "Inventory", "Financials", "Buy Box", "Listings", "Pricing", "Promotions", "Returns"},
 }
 MULTI_VALUE = {"Focus"}
 # Rows written before User/Mode existed hold `unknown` there (AGENTS.md, "Schema versions").

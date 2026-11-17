@@ -7,7 +7,7 @@
 * AI Model: <exact model name, e.g. Claude Opus 5.5>
 * Mode: <Chat | Voice | Schedule>
 * Logged: <Automatically (change via <tool name>) | With the seller's approval | By the scheduled task's instructions>
-* Focus: <PPC | SEO | Inventory | Financials | Buy Box | Listings | Pricing | Returns>
+* Focus: <PPC | SEO | Inventory | Financials | Buy Box | Listings | Pricing | Promotions | Returns>
 * Data Source: <connected tool name, e.g. KwickMetrics | Report: <report name> (<start>–<end>) | Seller | None>
 * Reporting Window: <exact date range, or "snapshot as of <timestamp>">
 * Related Activities: <ACT-XXX, ACT-XXX — or "None">

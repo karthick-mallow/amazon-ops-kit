@@ -9,7 +9,7 @@ description: >
   tracker repo and asks one question: where their Amazon data comes from; after a plugin update it
   migrates an existing tracker to the latest rules and schema, keeping the seller's own rules.
 metadata:
-  version: "0.10.1"
+  version: "0.10.2"
 ---
 
 # Setup
@@ -110,8 +110,9 @@ Tell the seller, in three short lines:
   Then replace the repo's `AGENTS.md`, `README.md`, `PROMPT.md` and `TEMPLATE.md` with the
   plugin's latest copies, keeping everything else. Then
   migrate the tracker to the current schema exactly as the new `AGENTS.md` section 7 describes
-  (schema from `Tracker schema` in `config.md`, or from the header if that line is missing), add the
-  check files if missing, and set `Tracker schema: 4`. If `config.md` has a `KwickMetrics accounts`
+  (schema from `Tracker schema` in `config.md`, or from the header if that line is missing), set
+  `Tracker schema: 4`, and **replace both check files** with the plugin's copies even if they exist
+  (they are kit-owned; a stale check rejects values the new rules allow). If `config.md` has a `KwickMetrics accounts`
   section, turn it into the **Data sources** (KwickMetrics, Connector) and **Accounts** tables,
   keeping the goals. One commit, `Update to Amazon Ops Copilot <version> [Claude / <model> ·
   <User> · <Mode>]`. Say what changed, including where each moved rule now lives.

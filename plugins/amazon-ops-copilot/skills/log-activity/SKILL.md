@@ -9,7 +9,7 @@ description: >
   logs only after the seller approves. Also when the user says "log this", "save this", or invokes
   /log-activity.
 metadata:
-  version: "0.10.1"
+  version: "0.10.2"
 ---
 
 # Log Activity
@@ -81,8 +81,11 @@ Before writing, read `Tracker schema` in `config.md` and follow `AGENTS.md` sect
 copy if the repo's is older): **4** → carry on; **higher** → don't write, tell the seller to update
 the plugin; **lower or missing** → migrate in the same commit (older rows: `Not recorded` in
 AI tool / AI model / Data source, `unknown` in User / Mode, never guessed), set
-`Tracker schema: 4`, and add the check files if missing from
-`${CLAUDE_PLUGIN_ROOT}/skills/setup/tracker-template/.github/`. If writing the workflow file is
+`Tracker schema: 4`. Also, if the repo's check files
+(`.github/workflows/check-tracker.yml`, `.github/scripts/check_tracker.py`) are missing or their
+`Amazon Ops Copilot kit:` line is older than this plugin's, replace them in the same commit from
+`${CLAUDE_PLUGIN_ROOT}/skills/setup/tracker-template/.github/` — otherwise the check can reject
+values these rules allow. If writing the workflow file is
 refused (the key lacks **Workflows: Read and write**), commit the rest and tell the seller once.
 
 ## 6. STATE.md and LESSONS.md

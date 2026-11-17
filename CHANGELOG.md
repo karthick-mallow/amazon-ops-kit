@@ -1,5 +1,26 @@
 # Changelog
 
+## 0.10.2 — 2026-11-17
+
+Kit and template ship this version together. No column changes (schema stays 4).
+
+### Added
+- **Focus `Promotions`** — deals, coupons, Prime discounts and sale events. Before, this work was
+  forced into Pricing or PPC, so the 90-day check could miss related history. Old rows that already
+  say `Promotions` stop producing warnings. Several Focus areas are separated with `;`.
+
+### Fixed
+- **The tracker check now updates with the kit.** "Update my AGENTS.md" replaces both check files
+  every time (before, it only added them when missing, so existing trackers kept an outdated check
+  that would reject newly allowed values). Both files carry an `Amazon Ops Copilot kit:` version
+  line; when logging, Claude also refreshes them if the tracker's copy is older than the plugin.
+
+### Migration — existing seller trackers
+1. Update the plugin to 0.10.2.
+2. Say "update my AGENTS.md". The commit refreshes `AGENTS.md`, `TEMPLATE.md` and both check files;
+   nothing in `tracker.csv` or `config.md` changes.
+3. The next check run no longer warns about old `Promotions` rows.
+
 ## 0.10.1 — 2026-11-17
 
 Kit and template ship this version together. No `tracker.csv` changes (schema stays 4).
