@@ -1,3 +1,4 @@
+# Amazon Ops Copilot kit: 0.10.2 — kit-owned, replaced on every kit update; don't edit it here.
 # Checks tracker.csv and config.md against the tracker schema on every change.
 # On failure it opens (or comments on) one issue labelled `tracker-check`, which AI tools read at
 # the start of a conversation; on a pass it closes that issue. See AGENTS.md, "Tracker check".

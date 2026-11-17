@@ -19,7 +19,7 @@ ID,Date (UTC),AI tool,AI model,User,Mode,Type,Brand,Marketplace,ASIN,SKU,Focus,D
 | Marketplace | Amazon domain, e.g. `amazon.in`; `All` if it spans every marketplace — never blank |
 | ASIN | ASINs covered, separated by `;`; `All` for whole account(s); `All <LINE>` for a product line — never blank |
 | SKU | Seller SKUs covered, separated by `;` (for a campaign: every enabled advertised SKU); same `All` rules — never blank |
-| Focus | PPC / SEO / Inventory / Financials / Buy Box / Listings / Pricing / Returns |
+| Focus | PPC / SEO / Inventory / Financials / Buy Box / Listings / Pricing / Promotions / Returns — Promotions = deals, coupons, Prime discounts, sale events; several separated by `;` |
 | Data source | Where the numbers came from: the connected tool's name (e.g. `KwickMetrics`); `Report: <report name> (<start>–<end>)` for an uploaded file; `Seller` for figures given in chat; `None` for pure brainstorming. Several separated by `;` — never blank |
 | Summary | One sentence |
 | Follow-up | `YYYY-MM-DD`, default +7 days, equal to section 7's review date; free text such as `Closed` once Completed |

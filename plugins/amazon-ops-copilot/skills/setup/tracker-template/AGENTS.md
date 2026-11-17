@@ -128,7 +128,8 @@ conversation.
    - Type: Brainstorming · Analysis · Diagnosis · Change · Review.
    - Brand / Marketplace / ASIN / SKU: never blank — use `All` when it covers everything; separate
      several values with `;`.
-   - Focus: PPC · SEO · Inventory · Financials · Buy Box · Listings · Pricing · Returns.
+   - Focus: PPC · SEO · Inventory · Financials · Buy Box · Listings · Pricing · Promotions ·
+     Returns (Promotions = deals, coupons, Prime discounts, sale events). Several separated by `;`.
    - Data source: the connected tool's name (e.g. `KwickMetrics`), or `Report: <report name>
      (<start>–<end>)` for an uploaded file, or `Seller` for figures the seller gave in chat, or
      `None` for pure brainstorming; several separated by `;`.
@@ -210,9 +211,12 @@ missing. Show the seller that list (moved, and already covered) and commit only 
 **Migrating:** apply each step after the tracker's schema, in order. Older rows get `Not recorded`
 in `AI tool`, `AI model` and `Data source`, and `unknown` in `User` and `Mode` — never guessed
 values. Step 4 also adds the **Users** section above **Goals and preferences** (owner's row) if
-missing. Then set `Tracker schema: 4` under `Updated` and change nothing else in old rows. If the
-check files (section 6) are missing, add them from the template repo
-`karthick-mallow/amazon-ops-tracker-template`; writing `.github/workflows/` needs the key to have
+missing. Then set `Tracker schema: 4` under `Updated` and change nothing else in old rows.
+
+**The check files** (section 6) are kit-owned: on every instructions update, replace both with the
+template repo's copies (`karthick-mallow/amazon-ops-tracker-template`), even if they exist — a
+stale check rejects values the new rules allow. Their `Amazon Ops Copilot kit:` line shows which
+version a tracker has. Never edit them in a tracker; writing `.github/workflows/` needs the key to have
 **Workflows: Read and write** — if that is refused, commit everything else and tell the seller once
 how to add it (`README.md`, "GitHub keys").
 
