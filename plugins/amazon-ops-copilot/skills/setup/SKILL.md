@@ -3,11 +3,13 @@ name: setup
 description: >
   This skill should be used when the user says "set up Amazon Ops Copilot", "set up my tracker",
   "create my activity tracker", "import my tracker into GitHub", "change my data source", "use the
-  tracker with Codex / Grok / Cursor", "connect another AI tool", or invokes /setup, and
-  whenever another Amazon Ops Copilot skill finds the tracker missing. It prepares the seller's
-  private GitHub tracker repo and asks one question: where their Amazon data comes from.
+  tracker with Codex / Grok / Cursor", "connect another AI tool", "update my AGENTS.md", "update my
+  tracker", "upgrade my tracker", "migrate my tracker", or invokes /setup, and whenever another
+  Amazon Ops Copilot skill finds the tracker missing. It prepares the seller's private GitHub
+  tracker repo and asks one question: where their Amazon data comes from; after a plugin update it
+  migrates an existing tracker to the latest rules and schema, keeping the seller's own rules.
 metadata:
-  version: "0.10.0"
+  version: "0.10.1"
 ---
 
 # Setup
@@ -97,10 +99,19 @@ Tell the seller, in three short lines:
   against the source; leave the original untouched.
 - **Connect another AI tool:** point them to the "Connect an AI tool" section of the repo's
   `README.md` for the tool they name.
-- **Update my AGENTS.md** (after a plugin update): replace the repo's `AGENTS.md`, `README.md`,
-  `PROMPT.md` and `TEMPLATE.md` with the plugin's latest copies, keeping everything else. Then
+- **Update my AGENTS.md / my tracker** (after a plugin update): first **keep the seller's own
+  rules** — compare the repo's `AGENTS.md` with the plugin's copy and list every rule, section or
+  block the plugin's copy doesn't contain (e.g. a "Standing instruction" block, a rule about a data
+  source). Map each into `config.md`: data sources → **Data sources**, rules → **Seller rules**
+  (worded for the seller), goals → **Goals and preferences**; mark any the new `AGENTS.md` already
+  covers. Do the same for edits the seller made to `TEMPLATE.md` (keep added page sections as a
+  Seller rule). Show the seller the list and wait for their OK — don't commit before it. Add the
+  **Seller rules** section if missing.
+  Then replace the repo's `AGENTS.md`, `README.md`, `PROMPT.md` and `TEMPLATE.md` with the
+  plugin's latest copies, keeping everything else. Then
   migrate the tracker to the current schema exactly as the new `AGENTS.md` section 7 describes
   (schema from `Tracker schema` in `config.md`, or from the header if that line is missing), add the
   check files if missing, and set `Tracker schema: 4`. If `config.md` has a `KwickMetrics accounts`
   section, turn it into the **Data sources** (KwickMetrics, Connector) and **Accounts** tables,
-  keeping the goals. Say what changed.
+  keeping the goals. One commit, `Update to Amazon Ops Copilot <version> [Claude / <model> ·
+  <User> · <Mode>]`. Say what changed, including where each moved rule now lives.

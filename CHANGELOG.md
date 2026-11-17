@@ -1,5 +1,34 @@
 # Changelog
 
+## 0.10.1 — 2026-11-17
+
+Kit and template ship this version together. No `tracker.csv` changes (schema stays 4).
+
+### Fixed
+- **"Update my AGENTS.md" now triggers the migration.** The setup skill's description lists
+  "update my AGENTS.md", "update my tracker", "upgrade my tracker" and "migrate my tracker";
+  before, Claude could treat the phrase as a request to hand-edit the file.
+- **Updates no longer drop the seller's own rules.** Before replacing `AGENTS.md` (and
+  `TEMPLATE.md`), the AI lists every rule or block the new copy doesn't contain, moves each into
+  `config.md`, shows the seller the list and commits only after their OK.
+- **Activity IDs are taken last** — re-read from the default branch right before the commit (pull
+  first on a local clone); on a rejected write, the page, row, `STATE.md` line and commit message
+  are renumbered together.
+
+### Added
+- `config.md` → **Seller rules**: the seller's standing rules for every AI tool. Saying "always…" or
+  "from now on…" saves one there. `AGENTS.md` says never to put seller rules in it; if a seller
+  rule conflicts with `AGENTS.md`, `AGENTS.md` wins and the AI says so once.
+
+### Migration — existing seller trackers
+1. Update the plugin to 0.10.1.
+2. Say "update my AGENTS.md" (a normal chat, with the plugin on). Claude lists the rules it found
+   in your current `AGENTS.md` that the kit doesn't have, and where each will go in `config.md`.
+3. Check the list — especially wording that names one brand — then say OK. One commit does the
+   rest (instructions, schema migration to 4 if needed, check files, **Seller rules** section).
+If you hand-edited `AGENTS.md` before this version, that's what step 2 rescues; from now on keep
+your rules in `config.md`.
+
 ## 0.10.0 — 2026-11-17
 
 Kit and template ship this version together. No `tracker.csv` column changes (schema stays 4).
