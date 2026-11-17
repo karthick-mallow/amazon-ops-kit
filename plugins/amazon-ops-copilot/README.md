@@ -2,7 +2,7 @@
 
 Shared memory and follow-through for Amazon sellers who use AI. Every change you make through a
 connected tool, and any analysis or decision you choose to keep, is saved to your own private
-GitHub repo, with the AI tool, model and data source behind it. Claude, Codex, Grok and Cursor read
+GitHub repo, with the AI tool, model, user, mode (chat / voice / schedule) and data source behind it. Claude, Codex, Grok and Cursor read
 that repo first, so whichever one you open already knows what you've done, and
 you never have to explain it again.
 
@@ -15,7 +15,7 @@ or the Ads console and upload in the chat.
 | Skill | When it runs | What it does |
 |---|---|---|
 | Load context | Automatically, when you talk about your business | Reads your tracker first, and always checks the last 90 days of related activity before suggesting anything |
-| Log activity | Automatically right after any change made through a connected tool; for anything else, after you say yes | Saves the activity to your GitHub tracker with the AI tool, model and data source, and tells you the ID |
+| Log activity | Automatically right after any change made through a connected tool; for anything else, after you say yes | Saves the activity to your GitHub tracker with the AI tool, model, user, mode and data source, and tells you the ID |
 | Review follow-ups | `/review-followups` | Checks whether earlier changes worked, with fresh numbers from the same source (or an updated report) |
 | Impact dashboard | `/impact-dashboard` | Charts your sales and ad spend with every logged activity marked on it |
 | Setup | Automatically on a fresh tracker, or `/setup` | Finishes setting up your tracker repo. Asks one question: where your data comes from |

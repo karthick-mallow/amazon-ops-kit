@@ -9,7 +9,7 @@ description: >
   or "keep ACoS under 30%". It loads what the seller has already done from their GitHub tracker so
   they never have to explain it again.
 metadata:
-  version: "0.8.3"
+  version: "0.9.0"
 ---
 
 # Load Context
@@ -51,8 +51,8 @@ pricing or inventory move, or a plan), check the tracker first:
 
 1. Filter `tracker.csv` to the **last 90 days**, and to rows about the same account, ASIN/SKU,
    campaign or area (focus) as the suggestion.
-2. Open those pages in `activities/` and note what was done, by which AI tool, and the result.
-3. In your answer, say in one or two lines what you found, e.g. *"ACT-012 (14 Sep, Grok) already
+2. Open those pages in `activities/` and note what was done, by whom (User), with which AI tool and in which Mode, and the result.
+3. In your answer, say in one or two lines what you found, e.g. *"ACT-012 (14 Sep, Karthick via Grok, Chat) already
    cut bids on these keywords; ACoS fell from 48% to 35%."* If nothing related exists, say
    *"No related activity in the last 90 days."*
 4. Don't repeat a suggestion that was already tried unless current data justifies it — then say

@@ -6,7 +6,7 @@ description: >
   activities whose follow-up date has arrived, compares them with fresh numbers from the same data
   source (a connected tool or an updated report), and logs the result.
 metadata:
-  version: "0.8.3"
+  version: "0.9.0"
 ---
 
 # Review Follow-ups
@@ -25,7 +25,9 @@ metadata:
 3. **Report** per activity: before → now with each figure's source, and a plain verdict — worked,
    partly worked, didn't work, too early to tell, or no data yet (say which report would settle
    it).
-4. **Record it** — ask the seller, then log one **Review** activity with `log-activity`. Then
+4. **Record it** — ask the seller, then log one **Review** activity with `log-activity` (it records
+   User and Mode; in a scheduled run, Mode is `Schedule` and you log only if the scheduled task's
+   instructions say to). Then
    update each reviewed row's Status and Follow-up in place, and add a dated
    `Review note (YYYY-MM-DD, ACT-NNN)` at the end of its page. Never change the original page's
    figures.

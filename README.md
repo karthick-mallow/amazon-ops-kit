@@ -67,8 +67,8 @@ No template? Copying everything in `plugins/amazon-ops-copilot/skills/setup/trac
                        ──writes─▶ activities/ACT-NNN.md + tracker.csv + STATE.md  (one commit)
 ```
 
-Every page and commit records which AI tool and model did the work and where the numbers came
-from, so a session in Codex on Monday and one in Claude on Tuesday continue the same thread.
+Every page and commit records which AI tool and model did the work, who asked for it (User), how
+the request came in (Mode: Chat, Voice or Schedule) and where the numbers came from, so a session in Codex on Monday and one in Claude on Tuesday continue the same thread.
 
 ## Repository layout
 

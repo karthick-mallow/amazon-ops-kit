@@ -96,4 +96,4 @@ cannot connect, ask the provider's support, or work from uploaded reports.
 3. Before suggesting anything: check the last 90 days of related activity.
 4. Log: changes made through a connected tool automatically; anything else only with the seller's
    approval. Each entry — a page in `activities/`, a top row in `tracker.csv`, an updated
-   `STATE.md` — records the AI tool, model and data source.
+   `STATE.md` — records the AI tool, model, user, mode (chat / voice / schedule) and data source.

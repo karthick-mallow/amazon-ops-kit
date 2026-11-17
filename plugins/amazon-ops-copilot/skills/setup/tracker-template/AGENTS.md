@@ -25,9 +25,11 @@ the tracker hasn't been set up. Before anything else, whichever AI tool you are:
 2. If the named tool is connected to you, use it to list the seller's accounts (name, ID or slug,
    marketplace). Otherwise leave **Accounts** to be filled from the first reports or brand names
    the seller shares.
-3. Fill `config.md` (**Data sources**, **Accounts**, `Updated`), replace `OWNER/REPO` in
+3. Fill `config.md` (**Data sources**, **Accounts**, **Users** — the owner's name as you know it,
+   else the repository owner's GitHub username; don't ask — and `Updated`), replace `OWNER/REPO` in
    `PROMPT.md` with this repository's full name, and set `STATE.md`'s first line to
-   `Last updated: <YYYY-MM-DD HH:MM UTC> — setup — <AI tool> / <AI model>`. Leave goals empty.
+   `Last updated: <YYYY-MM-DD HH:MM UTC> — setup — <AI tool> / <AI model> — <User> (<Mode>)`.
+   Leave goals empty.
 4. Commit `Set up Amazon Activity Tracker [<AI tool> / <AI model>]` (push it, if you work on a
    local clone).
 5. Tell the seller in three lines: the tracker is ready with the data source and accounts found;
@@ -38,7 +40,7 @@ The seller can change the data source later by saying so; update the same two ta
 
 ## 1. Start of every conversation — read first
 
-1. `config.md` — the seller's accounts, data sources, and any goals they have set.
+1. `config.md` — the seller's accounts, data sources, users, and any goals they have set.
 2. `STATE.md` — where things stand: open follow-ups, changes being watched, next steps.
 3. `LESSONS.md` — what earlier work taught.
 4. `tracker.csv` — every activity, newest first. For the topic at hand, open the related pages in
@@ -46,7 +48,7 @@ The seller can change the data source later by saying so; update the same two ta
 
 **Before suggesting anything, always check the last 90 days.** Filter `tracker.csv` to the last
 90 days and to the same account, ASIN/SKU, campaign or area; open those pages; tell the seller in
-one or two lines what was already done, by which AI tool, and what happened (or "No related
+one or two lines what was already done, by whom and with which AI tool, and what happened (or "No related
 activity in the last 90 days"). Don't repeat something already tried unless current data justifies
 it, and say what has changed since.
 
@@ -78,19 +80,39 @@ in one sentence.
 
 "Log this" counts as approval; "don't log this" stops any logging for that request.
 
+**A scheduled run** (no person in the conversation) logs every change it makes through a connected
+tool automatically, as above; anything else only if the scheduled task's own instructions say to
+log it (`Logged: By the scheduled task's instructions`) — otherwise leave it for the next
+conversation.
+
+**Who and how — record on every entry:**
+
+- **User** — the person who asked for or approved the work, by the name they use in
+  `config.md`'s **Users** table. Use the name they give or your app knows them by; if you can't
+  tell, and you are asking the save question anyway, add "and under which name?"; for an
+  automatic log where you can't tell, use the owner (first row of **Users**). Scheduled run: the
+  person who set up the scheduled task, else the owner. A new name → add a row to **Users** in the
+  same commit. Never blank.
+- **Mode** — how the request reached you: `Chat` (typed in a conversation), `Voice` (spoken —
+  voice mode, a call or a dictated request your app marks as voice) or `Schedule` (started by a
+  scheduled task, routine or automation with no person sending the request). If unsure between
+  Chat and Voice, use `Chat`. Never blank.
+
 1. **ID.** Re-read `tracker.csv` from the default branch now. Next ID = highest `ACT-NNN` + 1,
    three digits. Never reuse an ID.
 2. **Page.** Write `activities/ACT-NNN.md` from `TEMPLATE.md`: eight sections, same headings, same
    order; empty sections read `Not applicable — <reason>`. In the header, record **AI Tool** (your
    app's name, e.g. Claude, Codex, Grok, Cursor), **AI Model** (your exact model name, e.g.
-   Claude Opus 5.5), **Data Source**, and how it was logged (automatically or with approval).
+   Claude Opus 5.5), **Executed By** (the User), **Mode**, **Data Source**, and how it was logged (automatically,
+   with approval, or by a scheduled task's instructions).
    Include the tools called or reports used, date range, snapshot time (UTC), the numbers that
    mattered, decisions, and for a change the exact before → after values.
 3. **Row.** Add a row directly under the header of `tracker.csv`:
 
-   `ID,Date (UTC),AI tool,AI model,Type,Brand,Marketplace,ASIN,SKU,Focus,Data source,Summary,Follow-up,Status,Page`
+   `ID,Date (UTC),AI tool,AI model,User,Mode,Type,Brand,Marketplace,ASIN,SKU,Focus,Data source,Summary,Follow-up,Status,Page`
 
    - AI tool / AI model: your app and exact model name — never blank.
+   - User / Mode: as above — never blank.
    - Type: Brainstorming · Analysis · Diagnosis · Change · Review.
    - Brand / Marketplace / ASIN / SKU: never blank — use `All` when it covers everything; separate
      several values with `;`.
@@ -101,9 +123,10 @@ in one sentence.
    - Follow-up: `YYYY-MM-DD` (default +7 days). Status: Open · Scheduled · Monitoring · Completed.
    - Page: `activities/ACT-NNN.md`. Quote any field containing a comma.
 4. **STATE.md.** Update only what this activity changes; set the "Last updated" line to the time,
-   ID, your AI tool and model.
+   ID, your AI tool and model, the user and mode.
 5. **LESSONS.md.** Append a lesson only if something was learned that should change future work.
-6. **Commit** all files together: `ACT-NNN: <Type> — <short title> [<AI tool> / <AI model>]`.
+6. **Commit** all files together:
+   `ACT-NNN: <Type> — <short title> [<AI tool> / <AI model> · <User> · <Mode>]`.
    Working on a local clone (Codex, Cursor)? Pull first, then commit and push straight away, so
    the other tools see it.
 7. Tell the seller: `Saved to your tracker as ACT-NNN.`
@@ -114,10 +137,13 @@ worked, partly worked, didn't work, or too early / no data yet. With the seller'
 new Review activity; in the original row update Status and Follow-up in place; append
 `Review note (YYYY-MM-DD, ACT-NNN)` to the original page. Never change an old page's figures.
 
-**An older tracker** (header without `AI tool` / `AI model`, or with `KwickMetrics focus` and no
-`Data source`): before writing, bring the header up to date in the same commit — add `AI tool` and
-`AI model` after `Date (UTC)`, rename `KwickMetrics focus` to `Focus`, add `Data source` after it
-— and fill `Not recorded` in the new columns for older rows. Change nothing else in old rows.
+**An older tracker** (header without `AI tool` / `AI model` / `User` / `Mode`, or with
+`KwickMetrics focus` and no `Data source`): before writing, bring the header up to date in the same
+commit — add `AI tool` and `AI model` after `Date (UTC)`, `User` and `Mode` after `AI model`,
+rename `KwickMetrics focus` to `Focus`, add `Data source` after it — and fill the new columns for
+older rows with `unknown` for `User` / `Mode` (`Not recorded` for the others). Never guess values
+for old rows. If `config.md` has no **Users** section, add it above **Goals and
+preferences** with the owner's row. Change nothing else in old rows.
 
 ## 5. Several AI tools, one memory
 
@@ -133,7 +159,7 @@ new Review activity; in the original row update Status and Follow-up in place; a
 | File | Holds |
 |---|---|
 | `AGENTS.md` | These instructions |
-| `config.md` | Accounts, data sources, and goals and preferences the seller has set |
+| `config.md` | Accounts, data sources, users, and goals and preferences the seller has set |
 | `STATE.md` | Where things stand now |
 | `LESSONS.md` | Lessons learned (append-only) |
 | `tracker.csv` | One row per activity, newest first |

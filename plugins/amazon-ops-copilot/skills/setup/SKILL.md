@@ -7,7 +7,7 @@ description: >
   whenever another Amazon Ops Copilot skill finds the tracker missing. It prepares the seller's
   private GitHub tracker repo and asks one question: where their Amazon data comes from.
 metadata:
-  version: "0.8.3"
+  version: "0.9.0"
 ---
 
 # Setup
@@ -63,9 +63,10 @@ folder from the public repo `karthick-mallow/amazon-ops-kit` at
 Fill in:
 - `config.md` → the **Data sources** table (each source the seller chose, how it's used —
   Connector or Uploaded reports), the **Accounts** table (name, ID or slug, marketplace, source)
-  where known, and `Updated`. Leave **Goals and preferences** empty.
+  where known, the **Users** table (one Owner row: the seller's name if you know it, else their
+  GitHub username — don't ask), and `Updated`. Leave **Goals and preferences** empty.
 - `PROMPT.md` → replace `OWNER/REPO` with the tracker repo's full name.
-- `STATE.md` → `Last updated: <now UTC> — setup — Claude / <model>`.
+- `STATE.md` → `Last updated: <now UTC> — setup — Claude / <model> — <User> (<Mode>)`.
 
 **If the repo already has a tracker:** add only missing files. Never overwrite `tracker.csv`,
 pages, `STATE.md`, `LESSONS.md` or `config.md` goals; only refresh the data sources and accounts
@@ -88,14 +89,15 @@ Tell the seller, in three short lines:
 - **Import an existing tracker** (Claude Docs, Notion, a spreadsheet): copy every row and page
   exactly as it is — same IDs, dates and figures — into `tracker.csv` and `activities/`, in one
   commit `Import existing tracker (ACT-001 to ACT-NNN)`. Fill `Not recorded` in any column the
-  source doesn't have. Rebuild `STATE.md` from the rows still open. Report the count imported
+  source doesn't have (`unknown` for `User` / `Mode`) — never guessed values. Rebuild `STATE.md` from the rows still open. Report the count imported
   against the source; leave the original untouched.
 - **Connect another AI tool:** point them to the "Connect an AI tool" section of the repo's
   `README.md` for the tool they name.
 - **Update my AGENTS.md** (after a plugin update): replace the repo's `AGENTS.md`, `README.md`,
   `PROMPT.md` and `TEMPLATE.md` with the plugin's latest copies, keeping everything else. Bring
-  `tracker.csv`'s header up to date: add `AI tool` / `AI model` after `Date (UTC)` if missing,
-  rename `KwickMetrics focus` to `Focus`, add `Data source` after `Focus` — `Not recorded` in new
-  columns for older rows, nothing else changed. If `config.md` has a `KwickMetrics accounts`
+  `tracker.csv`'s header up to date: add `AI tool` / `AI model` after `Date (UTC)` and `User` /
+  `Mode` after `AI model` if missing, rename `KwickMetrics focus` to `Focus`, add `Data source` after `Focus` — `unknown` in `User` /
+  `Mode` and `Not recorded` in other new columns for older rows (never guessed), nothing else changed. If `config.md` has a `KwickMetrics accounts`
   section, turn it into the **Data sources** (KwickMetrics, Connector) and **Accounts** tables,
-  keeping the goals. Say what changed.
+  keeping the goals. Add a **Users** section (owner row) above **Goals and preferences** if missing.
+  Say what changed.

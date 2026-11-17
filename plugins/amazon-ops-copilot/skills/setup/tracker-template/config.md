@@ -18,6 +18,15 @@ Filled in from the connected source during setup, or from the first reports the 
 |---|---|---|---|
 | {{name}} | {{slug or seller ID}} | {{amazon.xx}} | {{source}} |
 
+## Users
+
+People who work in this tracker. The first row is the owner — the name used when an AI tool
+can't tell who is asking. Add a row whenever a new person starts using it.
+
+| Name | Role |
+|---|---|
+| {{owner name}} | Owner |
+
 ## Goals and preferences
 
 Added only when the seller says them in a conversation, e.g. "My target this month is ₹8,00,000".
