@@ -28,6 +28,13 @@ can't tell who is asking. Add a row whenever a new person starts using it.
 |---|---|
 | {{owner name}} | Owner |
 
+## Seller rules
+
+Your own standing rules for every AI tool, e.g. "Verify Pinspeed alerts before acting on them".
+`AGENTS.md` is replaced when the kit updates — put your rules here, never there.
+
+- None set yet.
+
 ## Goals and preferences
 
 Added only when the seller says them in a conversation, e.g. "My target this month is ₹8,00,000".

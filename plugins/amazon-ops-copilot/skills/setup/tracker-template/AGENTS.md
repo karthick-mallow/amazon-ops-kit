@@ -11,6 +11,9 @@ uploads. `config.md` lists the seller's sources.
 
 Every AI tool reads and writes this repository the same way, as described below.
 
+**Don't add the seller's own rules to this file** — it is replaced whenever the kit updates. They
+go in `config.md` → **Seller rules** (section 3).
+
 ---
 
 ## 0. First conversation — set up the tracker if it isn't yet
@@ -40,7 +43,8 @@ The seller can change the data source later by saying so; update the same two ta
 
 ## 1. Start of every conversation — read first
 
-1. `config.md` — the seller's accounts, data sources, users, and any goals they have set.
+1. `config.md` — the seller's accounts, data sources, users, **Seller rules** (follow them), and
+   any goals they have set.
 2. `STATE.md` — where things stand: open follow-ups, changes being watched, next steps.
 3. `LESSONS.md` — what earlier work taught.
 4. `tracker.csv` — every activity, newest first. For the topic at hand, open the related pages in
@@ -64,12 +68,18 @@ it, and say what has changed since.
 3. Label every figure with where it came from: the tool, or the report file and its date range.
 4. Never guess or estimate a figure you couldn't get; say what is missing.
 
-## 3. Goals — only when the seller states them
+## 3. Goals and seller rules — only when the seller states them
 
 Do not ask the seller for targets. When they state one in conversation (monthly revenue, target
 ACoS, a budget limit, a focus brand, a reporting preference), add or update a line under
 **Goals and preferences** in `config.md`: `- <goal> — set <YYYY-MM-DD> (<AI tool>)`, and confirm
 in one sentence.
+
+A standing instruction for how AI tools should work ("always…", "never…", "from now on…") goes
+under **Seller rules** the same way: `- <rule> — set <YYYY-MM-DD> (<User>)`, worded for the seller
+rather than one brand unless it is about one brand. Follow Seller rules in every conversation. If
+one conflicts with this file (e.g. "don't label figures with their source"), this file wins: say
+so to the seller once.
 
 ## 4. Logging — automatic for changes made through a connected tool, approval for everything else
 
@@ -99,8 +109,9 @@ conversation.
   scheduled task, routine or automation with no person sending the request). If unsure between
   Chat and Voice, use `Chat`. Never blank.
 
-1. **ID.** Re-read `tracker.csv` from the default branch now. Next ID = highest `ACT-NNN` + 1,
-   three digits. Never reuse an ID.
+1. **ID — take it last.** Right before committing (after the page and row are drafted), re-read
+   `tracker.csv` from the default branch — on a local clone, pull first. Next ID = highest
+   `ACT-NNN` + 1, three digits. Never reuse an ID or take it from memory or an earlier read.
 2. **Page.** Write `activities/ACT-NNN.md` from `TEMPLATE.md`: eight sections, same headings, same
    order; empty sections read `Not applicable — <reason>`. In the header, record **AI Tool** (your
    app's name, e.g. Claude, Codex, Grok, Cursor), **AI Model** (your exact model name, e.g.
@@ -144,7 +155,8 @@ bring an older tracker up to date in the same commit.
 ## 5. Several AI tools, one memory
 
 - Re-read `tracker.csv` and `STATE.md` just before writing. If a write is rejected because a file
-  changed, re-read, take the next free ID, and retry. Never overwrite another tool's entries.
+  changed, re-read, take the next free ID, rename the page, row, `STATE.md` line and commit message
+  to it, and retry. Never overwrite another tool's entries.
 - Never delete or rewrite old rows or pages, except the Status / Follow-up update, the review note,
   schema migrations and tracker-check fixes (section 7).
 - **Can read but not write here?** Give the seller the page, the CSV row and the `STATE.md` change
@@ -155,7 +167,7 @@ bring an older tracker up to date in the same commit.
 | File | Holds |
 |---|---|
 | `AGENTS.md` | These instructions |
-| `config.md` | Accounts, data sources, users, and goals and preferences the seller has set |
+| `config.md` | Accounts, data sources, users, seller rules, and goals and preferences |
 | `STATE.md` | Where things stand now |
 | `LESSONS.md` | Lessons learned (append-only) |
 | `tracker.csv` | One row per activity, newest first |
@@ -186,6 +198,14 @@ schema is **4**.
 - **Lower, or the line is missing** — migrate in the same commit as your entry (or on its own
   when the seller says "update my AGENTS.md"). With the line missing, find the schema by matching
   `tracker.csv`'s header to the table; if it matches none, don't write and tell the seller.
+
+**Updating the instructions** ("update my AGENTS.md", after a kit update): never drop the seller's
+own rules. Before replacing this file, compare the old copy with the new one and list every rule,
+section or block in the old copy that the new one doesn't contain (e.g. a "Standing instruction"
+block, a rule about a data source). Move each into `config.md` — data sources into **Data
+sources**, rules into **Seller rules** (worded for the seller), goals into **Goals and
+preferences** — skipping any the new file already covers, and add the **Seller rules** section if
+missing. Show the seller that list (moved, and already covered) and commit only after their OK.
 
 **Migrating:** apply each step after the tracker's schema, in order. Older rows get `Not recorded`
 in `AI tool`, `AI model` and `Data source`, and `unknown` in `User` and `Mode` — never guessed

@@ -9,7 +9,7 @@ description: >
   logs only after the seller approves. Also when the user says "log this", "save this", or invokes
   /log-activity.
 metadata:
-  version: "0.10.0"
+  version: "0.10.1"
 ---
 
 # Log Activity
@@ -48,8 +48,9 @@ else.
 
 ## 2. Activity ID
 
-Re-read `tracker.csv` from the default branch right now — another AI tool may have logged since.
-Next ID = highest `ACT-NNN` + 1, three digits. Never reuse an ID or take it from memory.
+Take the ID **last**: after drafting the page and row, right before the commit, re-read
+`tracker.csv` from the default branch — another AI tool may have logged since. Next ID = highest
+`ACT-NNN` + 1, three digits. Never reuse an ID or take it from memory or an earlier read.
 
 ## 3. Type — pick one
 

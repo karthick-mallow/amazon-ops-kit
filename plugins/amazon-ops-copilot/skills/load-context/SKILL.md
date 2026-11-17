@@ -9,7 +9,7 @@ description: >
   or "keep ACoS under 30%". It loads what the seller has already done from their GitHub tracker so
   they never have to explain it again.
 metadata:
-  version: "0.10.0"
+  version: "0.10.1"
 ---
 
 # Load Context
@@ -34,7 +34,8 @@ renaming it to `amazon-ops-tracker` so it is found automatically next time.
 
 ## 1. At the start — read before answering
 
-1. `config.md` — the seller's accounts, data sources and any goals they have set.
+1. `config.md` — the seller's accounts, data sources, users, **Seller rules** (follow them in this
+   conversation) and any goals they have set.
 2. `STATE.md` — where things stand: open follow-ups, changes being watched, next steps.
 3. `LESSONS.md` — what earlier work taught.
 4. `tracker.csv` — the activity list, newest first.
@@ -87,6 +88,11 @@ target, a target ACoS, a budget limit, a brand to focus on, how they like report
 
 Use saved goals when they are relevant (e.g. compare month-to-date sales with a saved target), and
 never invent one.
+
+A standing instruction about how to work ("always verify Pinspeed alerts first", "from now on…")
+is a **Seller rule**: add it under **Seller rules** in `config.md` as
+`- <rule> — set <YYYY-MM-DD> (<User>)` (add the section above **Goals and preferences** if missing)
+and confirm in one sentence. Never write seller rules into `AGENTS.md`.
 
 ## 5. Logging
 

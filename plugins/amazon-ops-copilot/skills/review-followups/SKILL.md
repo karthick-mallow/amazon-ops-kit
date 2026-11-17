@@ -6,7 +6,7 @@ description: >
   activities whose follow-up date has arrived, compares them with fresh numbers from the same data
   source (a connected tool or an updated report), and logs the result.
 metadata:
-  version: "0.10.0"
+  version: "0.10.1"
 ---
 
 # Review Follow-ups

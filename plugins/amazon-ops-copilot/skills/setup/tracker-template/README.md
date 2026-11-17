@@ -87,6 +87,12 @@ write**. Optional: **Issues: Read-only**, so the AI can see when the tracker che
 before 0.10.0. Give each tool its own key so you can revoke one without affecting the others.
 Never paste a key into a chat.
 
+### Your own rules
+
+Put your standing rules ("always…", "never…") in `config.md` → **Seller rules** — or just say them
+to any AI tool and it saves them there. Don't edit `AGENTS.md`: it is replaced when the kit
+updates.
+
 ### Tracker check
 
 Every push that touches `tracker.csv`, `config.md` or `activities/` runs a short check on GitHub
